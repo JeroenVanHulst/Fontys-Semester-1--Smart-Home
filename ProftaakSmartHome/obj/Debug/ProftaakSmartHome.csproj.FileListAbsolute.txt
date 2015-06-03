@@ -27,3 +27,10 @@ C:\Users\Jeroen\Dropbox\Proftaak A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\Proftaa
 C:\Users\Jeroen\Dropbox\Proftaak A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\ProftaakSmartHome\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.pdb
 C:\Users\Jeroen\Dropbox\Proftaak A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\ProftaakSmartHome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
 C:\Users\Wessel\Dropbox\P2 - Proftaakgroep A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\ProftaakSmartHome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.exe
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.pdb
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csprojResolveAssemblyReference.cache
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
+C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll

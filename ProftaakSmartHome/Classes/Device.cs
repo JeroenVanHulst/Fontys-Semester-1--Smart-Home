@@ -33,18 +33,32 @@ namespace ProftaakSmartHome.Classes
         
         public void Update()
         {
-            // TODO: Implementeren update functie
-            throw new NotImplementedException();
+            var query = "UPDATE device SET name = '" + Name + "', value =" + Value + ", type =" + (int) Type;
+            Database.Query = query;
+
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
         }
 
         public void Remove()
         {
-            throw new NotImplementedException();
+            var query = "DELETE FROM device WHERE deviceid =" + Id;
+            Database.Query = query;
+
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
         }
 
         public void Insert()
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO device (name, value, type) VALUES('" + Name + "'," + 0 + ", " + (int) Type + ")";
+            Database.Query = query;
+
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
         }
     }
 }

@@ -31,6 +31,13 @@ namespace ProftaakSmartHome.Classes
             Password = password;
         }
 
+        public User(int id, string name, string password)
+        {
+            Id = id;
+            Name = name;
+            Password = password;
+        }
+
         public void SetPassword(string password)
         {
             Password = UserService.ConvertStringToMd5(password);
@@ -40,32 +47,124 @@ namespace ProftaakSmartHome.Classes
 
         public void Update()
         {
-            throw new NotImplementedException();
+            var query = "UPDATE user SET username = '" + Name + "', password =" + Password;
+            Database.Query = query;
+
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
         }
 
         public void Remove()
         {
-            throw new NotImplementedException();
+            var query = "DELETE FROM user WHERE userid=" + Id;
+            Database.Query = query;
+
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
         }
 
         public void Insert()
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO user (username, password) VALUES ('" + Name + "', '" + Password + "')";
+            Database.Query = query;
+
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
         }
 
         public static List<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            var queryUsers = "SELECT * FROM user";
+            var users = new List<User>();
+
+            Database.Query = queryUsers;
+            Database.OpenConnection();
+
+            var reader = Database.Command.ExecuteReader();
+            while (reader.Read())
+            {
+                var user = new User((int) reader["userid"], reader["username"].ToString(), reader["password"].ToString());
+                users.Add(user);
+            }
+
+            var queryPrivileges = "SELECT * FROM permission";
+            Database.Query = queryPrivileges;
+
+            reader = Database.Command.ExecuteReader();
+            while (reader.Read())
+            {
+                users.First(x => x.Id == (int) reader["userid"])
+                     .Privileges.Add(Room.GetRoomById((int) reader["roomid"]));
+            }
+
+            Database.CloseConnection();
+
+            return users;
         }
 
         public static User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            var queryUsers = "SELECT * FROM user WHERE userid="+id;
+            User user;
+
+            Database.Query = queryUsers;
+            Database.OpenConnection();
+
+            var reader = Database.Command.ExecuteReader();
+            if(reader.HasRows)
+            {
+                user = new User((int)reader["userid"], reader["username"].ToString(), reader["password"].ToString());
+
+                var queryPrivileges = "SELECT * FROM permission WHERE userid=" + user.Id;
+                Database.Query = queryPrivileges;
+
+                var readerPrivileges = Database.Command.ExecuteReader();
+
+                while (readerPrivileges.Read())
+                {
+                    user.Privileges.Add(Room.GetRoomById((int) reader["roomid"]));
+                }
+
+                return user;
+            }
+
+            Database.CloseConnection();
+
+            return null;
         }
 
         public static User GetUserByName(string name)
         {
-            throw new NotImplementedException();
+            var queryUsers = "SELECT * FROM user WHERE username='" + name + "'";
+            User user;
+
+            Database.Query = queryUsers;
+            Database.OpenConnection();
+
+            var reader = Database.Command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                user = new User((int)reader["userid"], reader["username"].ToString(), reader["password"].ToString());
+
+                var queryPrivileges = "SELECT * FROM permission WHERE userid=" + user.Id;
+                Database.Query = queryPrivileges;
+
+                var readerPrivileges = Database.Command.ExecuteReader();
+
+                while (readerPrivileges.Read())
+                {
+                    user.Privileges.Add(Room.GetRoomById((int)reader["roomid"]));
+                }
+
+                return user;
+            }
+
+            Database.CloseConnection();
+
+            return null;
         }
 
         #endregion
