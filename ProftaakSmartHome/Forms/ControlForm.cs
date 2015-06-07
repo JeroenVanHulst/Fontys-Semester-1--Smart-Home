@@ -14,11 +14,13 @@ namespace ProftaakSmartHome.Forms
     public partial class ControlForm : Form
     {
         private User _user;
+        private List<Group> _groups;
 
         public ControlForm(User user)
         {
             InitializeComponent();
             _user = user;
+            _groups = Group.GetAllGroups();
         }
     }
 }

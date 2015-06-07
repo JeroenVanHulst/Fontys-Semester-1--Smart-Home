@@ -16,7 +16,7 @@ namespace ProftaakSmartHome.Classes
 
         public string Password { get; private set; }
 
-        public List<Room> Privileges { get; set; }
+        public List<Group> Privileges { get; set; }
 
         public bool IsAdmin { get; set; }
 
@@ -28,14 +28,14 @@ namespace ProftaakSmartHome.Classes
         public User(string name, string password)
         {
             Name = name;
-            Password = password;
+            SetPassword(password);
         }
 
         public User(int id, string name, string password)
         {
             Id = id;
             Name = name;
-            Password = password;
+            SetPassword(password);
         }
 
         public void SetPassword(string password)
@@ -97,7 +97,7 @@ namespace ProftaakSmartHome.Classes
             while (reader.Read())
             {
                 users.First(x => x.Id == (int) reader["userid"])
-                     .Privileges.Add(Room.GetRoomById((int) reader["roomid"]));
+                     .Privileges.Add(Group.GetGroupById((int) reader["groupid"]));
             }
 
             Database.CloseConnection();
@@ -118,14 +118,14 @@ namespace ProftaakSmartHome.Classes
             {
                 user = new User((int)reader["userid"], reader["username"].ToString(), reader["password"].ToString());
 
-                var queryPrivileges = "SELECT * FROM permission WHERE userid=" + user.Id;
+                var queryPrivileges = "SELECT * FROM permission WHERE userid = " + user.Id;
                 Database.Query = queryPrivileges;
 
                 var readerPrivileges = Database.Command.ExecuteReader();
 
                 while (readerPrivileges.Read())
                 {
-                    user.Privileges.Add(Room.GetRoomById((int) reader["roomid"]));
+                    user.Privileges.Add(Group.GetGroupById((int) reader["groupid"]));
                 }
 
                 return user;
@@ -156,7 +156,7 @@ namespace ProftaakSmartHome.Classes
 
                 while (readerPrivileges.Read())
                 {
-                    user.Privileges.Add(Room.GetRoomById((int)reader["roomid"]));
+                    user.Privileges.Add(Group.GetGroupById((int)reader["groupid"]));
                 }
 
                 return user;
