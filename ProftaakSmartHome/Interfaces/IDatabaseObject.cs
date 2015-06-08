@@ -8,7 +8,7 @@ namespace ProftaakSmartHome.Classes
 {
     interface IDatabaseObject
     {
-        int Id { get; set; }
+        int Id { get; }
         string Name { get; set; }
 
         void Update();

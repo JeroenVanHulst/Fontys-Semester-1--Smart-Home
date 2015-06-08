@@ -28,14 +28,14 @@ namespace ProftaakSmartHome.Classes
         public User(string name, string password)
         {
             Name = name;
-            SetPassword(password);
+            Password = password;
         }
 
         public User(int id, string name, string password)
         {
             Id = id;
             Name = name;
-            SetPassword(password);
+            Password = password;
         }
 
         public void SetPassword(string password)

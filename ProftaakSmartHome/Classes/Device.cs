@@ -60,5 +60,23 @@ namespace ProftaakSmartHome.Classes
             Database.Command.ExecuteNonQuery();
             Database.CloseConnection();
         }
+
+        public static List<Device> GetAllDevices()
+        {
+            var query = "SELECT * FROM device";
+            Database.Query = query;
+
+            var reader = Database.Command.ExecuteReader();
+            var devices = new List<Device>();
+
+            while (reader.Read())
+            {
+                Device device = new Device((int) reader["deviceid"], reader["name"].ToString(), (int) reader["value"],
+                    (DeviceType) reader["type"]); // Create new device object
+                devices.Add(device);
+            }
+
+            return devices;
+        }
     }
 }

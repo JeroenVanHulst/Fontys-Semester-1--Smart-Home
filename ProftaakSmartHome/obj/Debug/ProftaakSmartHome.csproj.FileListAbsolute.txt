@@ -34,3 +34,5 @@ C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\P
 C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
 C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
 C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources

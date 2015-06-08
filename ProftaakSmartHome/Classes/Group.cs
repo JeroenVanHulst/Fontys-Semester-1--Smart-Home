@@ -63,7 +63,7 @@ namespace ProftaakSmartHome.Classes
         public static List<Group> GetAllGroups()
         {
             var queryGroups = "SELECT * FROM groups";
-            var queryLights = "SELECT d.* FROM device d, device_group dg, groups g WHERE d.deviceid = dg.deviceid AND g.groupid = ";
+            var queryDevices = "SELECT d.* FROM device d, device_group dg, groups g WHERE d.deviceid = dg.deviceid AND g.groupid = ";
 
             Database.Query = queryGroups;
             Database.OpenConnection();
@@ -79,7 +79,7 @@ namespace ProftaakSmartHome.Classes
 
             foreach (var group in groups)
             {
-                Database.Query = queryLights + group.Id;
+                Database.Query = queryDevices + group.Id;
                 reader = Database.Command.ExecuteReader();
                 while (reader.Read())
                 {
