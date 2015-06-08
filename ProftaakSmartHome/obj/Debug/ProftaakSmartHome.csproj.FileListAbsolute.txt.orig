@@ -34,6 +34,10 @@ C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\P
 C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
 C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
 C:\Users\Wessel\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll
+<<<<<<< local
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
+=======
 C:\Development\Proftaak 2\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.exe.config
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.exe
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.pdb
@@ -44,3 +48,4 @@ C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csprojRe
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
+>>>>>>> other
