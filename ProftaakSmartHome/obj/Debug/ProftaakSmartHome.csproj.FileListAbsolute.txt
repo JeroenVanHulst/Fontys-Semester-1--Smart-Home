@@ -27,3 +27,6 @@ C:\Users\Jeroen\Dropbox\Proftaak A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\Proftaa
 C:\Users\Jeroen\Dropbox\Proftaak A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\ProftaakSmartHome\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.pdb
 C:\Users\Jeroen\Dropbox\Proftaak A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\ProftaakSmartHome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
 C:\Users\Wessel\Dropbox\P2 - Proftaakgroep A3A\P-PT12-A3\Proftaak P2\SE12 Proftaak\ProftaakSmartHome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
+C:\Development\Proftaak 2\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.exe.config
+C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.exe
+C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.pdb
