@@ -48,7 +48,7 @@ namespace ProftaakSmartHome.Forms
                 return;
             }
 
-            var controlForm = new ControlForm(user);
+            var controlForm = new MainForm(user);
         }
     }
 }
