@@ -82,5 +82,20 @@ namespace ProftaakSmartHome.Forms
             var user = new User("new user");
             advPropertyGridUsers.SelectedObject = user;
         }
+
+        private void advPropertyGridUsers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void advPropertyGridGroup_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void advPropertyGridDevices_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
