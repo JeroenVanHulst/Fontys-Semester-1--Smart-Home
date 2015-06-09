@@ -81,7 +81,7 @@ namespace ProftaakSmartHome.Classes
 
             while (reader.Read())
             {
-                groups.Add(new Group((int)reader["groupid"], reader["name"].ToString()));
+                groups.Add(new Group(reader["name"].ToString()){Id = Convert.ToInt32(reader["id"])});
             }
 
             foreach (var group in groups)
@@ -113,7 +113,7 @@ namespace ProftaakSmartHome.Classes
 
             if (reader.HasRows)
             {
-                result = new Group((int) reader["groupid"], reader["name"].ToString());
+                result = new Group(reader["name"].ToString()) {Id = Convert.ToInt32(reader["id"])};
                 var queryDevice = "SELECT d.* FROM device d, device_group dg, group g WHERE d.deviceid = dg.deviceid AND g.groupid = " + result.Id;
                 Database.Query = queryDevice;
                 var deviceReader = Database.Command.ExecuteReader();
@@ -146,7 +146,7 @@ namespace ProftaakSmartHome.Classes
 
             if (reader.HasRows)
             {
-                result = new Group((int)reader["groupid"], reader["name"].ToString());
+                result = new Group(reader["name"].ToString()) {Id = Convert.ToInt32(reader["id"])};
                 var queryDevice = "SELECT d.* FROM device d, device_group dg, groups g WHERE d.deviceid = dg.deviceid AND g.groupid = " + result.Id;
                 Database.Query = queryDevice;
                 var deviceReader = Database.Command.ExecuteReader();
