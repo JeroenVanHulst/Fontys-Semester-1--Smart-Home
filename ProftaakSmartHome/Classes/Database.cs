@@ -26,7 +26,7 @@ namespace ProftaakSmartHome.Classes
 
         public static void OpenConnection()
         {
-            // Controleer of de verbinding niet al open is
+            // Checks if the connection is not already open
             if (_connection.State != System.Data.ConnectionState.Open)
             {
                 _connection.Open();
@@ -35,7 +35,7 @@ namespace ProftaakSmartHome.Classes
 
         public static void CloseConnection()
         {
-            // Controleer of de verbinding niet al gesloten is
+            // Checks if the connection is not already closed
             if (_connection.State != System.Data.ConnectionState.Closed)
             {
                 _connection.Close();
@@ -48,13 +48,29 @@ namespace ProftaakSmartHome.Classes
 
             if (createNew)
             {
-                SQLiteConnection.CreateFile(_filename+"new");
+                SQLiteConnection.CreateFile(_filename);
+                GenerateSchemas();
             }
 
             if (_connection == null)
             {
                 _connection = new SQLiteConnection(String.Format("Data Source={0};Version=3", _filename));
             }
+        }
+
+        private static void GenerateSchemas()
+        {
+            OpenConnection();
+
+            var query = string.Empty;
+            var lines = File.ReadAllLines("databaseExport.sql");
+
+            query = lines.Aggregate(query, (current, line) => current + line); // Puts every line in a single string.
+            Query = query;
+
+            Command.ExecuteNonQuery();
+
+            CloseConnection();
         }
     }
 }

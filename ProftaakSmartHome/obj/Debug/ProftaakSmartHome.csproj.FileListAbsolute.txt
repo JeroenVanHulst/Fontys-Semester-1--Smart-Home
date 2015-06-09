@@ -60,3 +60,10 @@ D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.cspro
 D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.GroupDevices.resources
 D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LightControl.resources
 D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.UserGroups.resources
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\DevComponents.DotNetBar2.dll
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.GroupDevices.resources
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LightControl.resources
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.MainForm.resources
+D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.UserGroups.resources
