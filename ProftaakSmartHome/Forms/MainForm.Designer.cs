@@ -155,6 +155,7 @@
             this.advPropertyGridDevices.Size = new System.Drawing.Size(155, 365);
             this.advPropertyGridDevices.TabIndex = 7;
             this.advPropertyGridDevices.Text = "advPropertyGrid3";
+            this.advPropertyGridDevices.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.advPropertyGridDevices_PropertyChanged);
             // 
             // advTreeDevices
             // 
@@ -245,6 +246,7 @@
             this.advPropertyGridGroup.Size = new System.Drawing.Size(155, 365);
             this.advPropertyGridGroup.TabIndex = 7;
             this.advPropertyGridGroup.Text = "advPropertyGrid2";
+            this.advPropertyGridGroup.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.advPropertyGridGroup_PropertyChanged);
             // 
             // buttonEditGroupDevices
             // 
@@ -367,6 +369,7 @@
             this.advPropertyGridUsers.Size = new System.Drawing.Size(155, 365);
             this.advPropertyGridUsers.TabIndex = 6;
             this.advPropertyGridUsers.Text = "advPropertyGrid1";
+            this.advPropertyGridUsers.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.advPropertyGridUsers_PropertyChanged);
             // 
             // buttonDeleteUser
             // 
