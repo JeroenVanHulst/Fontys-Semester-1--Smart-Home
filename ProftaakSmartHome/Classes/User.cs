@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,7 +16,13 @@ namespace ProftaakSmartHome.Classes
 
         public string Name { get; set; }
 
-        public string Password { get; private set; }
+        private string _password;
+
+        public string Password
+        {
+            get { return _password; }
+            set { _password = UserService.ConvertStringToMd5(value); }
+        }
 
         public List<Group> Privileges { get; set; }
 
@@ -29,14 +36,14 @@ namespace ProftaakSmartHome.Classes
         public User(string name, string password)
         {
             Name = name;
-            Password = password;
+            _password = password;
         }
 
         public User(int id, string name, string password)
         {
             Id = id;
             Name = name;
-            Password = password;
+            _password = password;
         }
 
         public void SetPassword(string password)

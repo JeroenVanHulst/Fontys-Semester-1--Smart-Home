@@ -56,7 +56,7 @@
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAddUser = new System.Windows.Forms.Button();
             this.advTreeUsers = new DevComponents.AdvTree.AdvTree();
             this.columnHeader9 = new DevComponents.AdvTree.ColumnHeader();
             this.columnHeader10 = new DevComponents.AdvTree.ColumnHeader();
@@ -65,6 +65,11 @@
             this.nodeConnector3 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle3 = new DevComponents.DotNetBar.ElementStyle();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.advPropertyGridUsers = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.advPropertyGrid2 = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.advPropertyGrid3 = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabDevices.SuspendLayout();
@@ -73,6 +78,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.advTreeGroups)).BeginInit();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.advTreeUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -131,6 +139,9 @@
             // 
             // tabDevices
             // 
+            this.tabDevices.Controls.Add(this.button7);
+            this.tabDevices.Controls.Add(this.button1);
+            this.tabDevices.Controls.Add(this.advPropertyGrid3);
             this.tabDevices.Controls.Add(this.advTree1);
             this.tabDevices.Location = new System.Drawing.Point(4, 22);
             this.tabDevices.Name = "tabDevices";
@@ -208,6 +219,7 @@
             // 
             // tabGroups
             // 
+            this.tabGroups.Controls.Add(this.advPropertyGrid2);
             this.tabGroups.Controls.Add(this.button6);
             this.tabGroups.Controls.Add(this.button5);
             this.tabGroups.Controls.Add(this.button4);
@@ -317,9 +329,10 @@
             // 
             // tabUsers
             // 
+            this.tabUsers.Controls.Add(this.advPropertyGridUsers);
             this.tabUsers.Controls.Add(this.button3);
             this.tabUsers.Controls.Add(this.button2);
-            this.tabUsers.Controls.Add(this.button1);
+            this.tabUsers.Controls.Add(this.buttonAddUser);
             this.tabUsers.Controls.Add(this.advTreeUsers);
             this.tabUsers.Location = new System.Drawing.Point(4, 22);
             this.tabUsers.Name = "tabUsers";
@@ -353,17 +366,18 @@
             this.button2.Text = "Edit privileges";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // buttonAddUser
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(779, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 47);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddUser.ForeColor = System.Drawing.Color.White;
+            this.buttonAddUser.Location = new System.Drawing.Point(779, 6);
+            this.buttonAddUser.Name = "buttonAddUser";
+            this.buttonAddUser.Size = new System.Drawing.Size(155, 47);
+            this.buttonAddUser.TabIndex = 3;
+            this.buttonAddUser.Text = "Add";
+            this.buttonAddUser.UseVisualStyleBackColor = false;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
             // advTreeUsers
             // 
@@ -434,6 +448,57 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             // 
+            // advPropertyGridUsers
+            // 
+            this.advPropertyGridUsers.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.advPropertyGridUsers.Location = new System.Drawing.Point(779, 165);
+            this.advPropertyGridUsers.Name = "advPropertyGridUsers";
+            this.advPropertyGridUsers.Size = new System.Drawing.Size(155, 365);
+            this.advPropertyGridUsers.TabIndex = 6;
+            this.advPropertyGridUsers.Text = "advPropertyGrid1";
+            // 
+            // advPropertyGrid2
+            // 
+            this.advPropertyGrid2.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.advPropertyGrid2.Location = new System.Drawing.Point(779, 165);
+            this.advPropertyGrid2.Name = "advPropertyGrid2";
+            this.advPropertyGrid2.Size = new System.Drawing.Size(155, 365);
+            this.advPropertyGrid2.TabIndex = 7;
+            this.advPropertyGrid2.Text = "advPropertyGrid2";
+            // 
+            // advPropertyGrid3
+            // 
+            this.advPropertyGrid3.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.advPropertyGrid3.Location = new System.Drawing.Point(779, 165);
+            this.advPropertyGrid3.Name = "advPropertyGrid3";
+            this.advPropertyGrid3.Size = new System.Drawing.Size(155, 365);
+            this.advPropertyGrid3.TabIndex = 7;
+            this.advPropertyGrid3.Text = "advPropertyGrid3";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(779, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 47);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Add";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(779, 59);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(155, 47);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Delete";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,6 +519,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.advTreeGroups)).EndInit();
             this.tabUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.advTreeUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -485,7 +553,7 @@
         private DevComponents.DotNetBar.ElementStyle elementStyle2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAddUser;
         private DevComponents.AdvTree.AdvTree advTreeUsers;
         private DevComponents.AdvTree.ColumnHeader columnHeader9;
         private DevComponents.AdvTree.ColumnHeader columnHeader10;
@@ -497,6 +565,11 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button buttonSave;
+        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGrid3;
+        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGrid2;
+        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridUsers;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button1;
 
     }
 }
