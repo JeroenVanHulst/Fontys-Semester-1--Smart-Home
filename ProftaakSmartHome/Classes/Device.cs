@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
@@ -38,14 +40,22 @@ namespace ProftaakSmartHome.Classes
             Database.CloseConnection();
         }
 
-        public void Remove()
+        public bool Remove()
         {
             var query = "DELETE FROM device WHERE deviceid =" + Id;
             Database.Query = query;
 
-            Database.OpenConnection();
-            Database.Command.ExecuteNonQuery();
-            Database.CloseConnection();
+            try
+            {
+                Database.OpenConnection();
+                Database.Command.ExecuteNonQuery();
+                Database.CloseConnection();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Insert()

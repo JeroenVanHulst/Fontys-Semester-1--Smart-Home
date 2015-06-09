@@ -34,8 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabDevices = new System.Windows.Forms.TabPage();
-            this.buttonDeleteDevice = new System.Windows.Forms.Button();
-            this.buttonAddDevice = new System.Windows.Forms.Button();
             this.advPropertyGridDevices = new DevComponents.DotNetBar.AdvPropertyGrid();
             this.advTreeDevices = new DevComponents.AdvTree.AdvTree();
             this.columnHeader1 = new DevComponents.AdvTree.ColumnHeader();
@@ -139,8 +137,6 @@
             // 
             // tabDevices
             // 
-            this.tabDevices.Controls.Add(this.buttonDeleteDevice);
-            this.tabDevices.Controls.Add(this.buttonAddDevice);
             this.tabDevices.Controls.Add(this.advPropertyGridDevices);
             this.tabDevices.Controls.Add(this.advTreeDevices);
             this.tabDevices.Location = new System.Drawing.Point(4, 22);
@@ -150,30 +146,6 @@
             this.tabDevices.TabIndex = 1;
             this.tabDevices.Text = "Devices";
             this.tabDevices.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteDevice
-            // 
-            this.buttonDeleteDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.buttonDeleteDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteDevice.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteDevice.Location = new System.Drawing.Point(779, 59);
-            this.buttonDeleteDevice.Name = "buttonDeleteDevice";
-            this.buttonDeleteDevice.Size = new System.Drawing.Size(155, 47);
-            this.buttonDeleteDevice.TabIndex = 9;
-            this.buttonDeleteDevice.Text = "Delete";
-            this.buttonDeleteDevice.UseVisualStyleBackColor = false;
-            // 
-            // buttonAddDevice
-            // 
-            this.buttonAddDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.buttonAddDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddDevice.ForeColor = System.Drawing.Color.White;
-            this.buttonAddDevice.Location = new System.Drawing.Point(779, 6);
-            this.buttonAddDevice.Name = "buttonAddDevice";
-            this.buttonAddDevice.Size = new System.Drawing.Size(155, 47);
-            this.buttonAddDevice.TabIndex = 8;
-            this.buttonAddDevice.Text = "Add";
-            this.buttonAddDevice.UseVisualStyleBackColor = false;
             // 
             // advPropertyGridDevices
             // 
@@ -285,6 +257,7 @@
             this.buttonEditGroupDevices.TabIndex = 6;
             this.buttonEditGroupDevices.Text = "Edit devices";
             this.buttonEditGroupDevices.UseVisualStyleBackColor = false;
+            this.buttonEditGroupDevices.Click += new System.EventHandler(this.buttonEditGroupDevices_Click);
             // 
             // buttonDeleteGroup
             // 
@@ -297,6 +270,7 @@
             this.buttonDeleteGroup.TabIndex = 5;
             this.buttonDeleteGroup.Text = "Delete";
             this.buttonDeleteGroup.UseVisualStyleBackColor = false;
+            this.buttonDeleteGroup.Click += new System.EventHandler(this.buttonDeleteGroup_Click);
             // 
             // buttonAddGroup
             // 
@@ -309,6 +283,7 @@
             this.buttonAddGroup.TabIndex = 4;
             this.buttonAddGroup.Text = "Add";
             this.buttonAddGroup.UseVisualStyleBackColor = false;
+            this.buttonAddGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
             // 
             // advTreeGroups
             // 
@@ -404,6 +379,7 @@
             this.buttonDeleteUser.TabIndex = 5;
             this.buttonDeleteUser.Text = "Delete";
             this.buttonDeleteUser.UseVisualStyleBackColor = false;
+            this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
             // 
             // buttonEditUserPrivileges
             // 
@@ -416,6 +392,7 @@
             this.buttonEditUserPrivileges.TabIndex = 4;
             this.buttonEditUserPrivileges.Text = "Edit privileges";
             this.buttonEditUserPrivileges.UseVisualStyleBackColor = false;
+            this.buttonEditUserPrivileges.Click += new System.EventHandler(this.buttonEditUserPrivileges_Click);
             // 
             // buttonAddUser
             // 
@@ -568,8 +545,6 @@
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridDevices;
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridGroup;
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridUsers;
-        private System.Windows.Forms.Button buttonDeleteDevice;
-        private System.Windows.Forms.Button buttonAddDevice;
 
     }
 }

@@ -63,14 +63,22 @@ namespace ProftaakSmartHome.Classes
             Database.CloseConnection();
         }
 
-        public void Remove()
+        public bool Remove()
         {
             var query = "DELETE FROM user WHERE userid=" + Id;
             Database.Query = query;
 
-            Database.OpenConnection();
-            Database.Command.ExecuteNonQuery();
-            Database.CloseConnection();
+            try
+            {
+                Database.OpenConnection();
+                Database.Command.ExecuteNonQuery();
+                Database.CloseConnection();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Insert()

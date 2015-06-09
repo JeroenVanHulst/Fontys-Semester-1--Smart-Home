@@ -34,38 +34,58 @@ namespace ProftaakSmartHome.Forms
             buttonSave.Enabled = false;
         }
 
-        private void setGroups()
-        {
-            var groups = _user.IsAdmin ? Group.GetAllGroups() : new List<Group>(_user.Privileges);
-
-            foreach (var group in groups)
-            {
-                comboBoxGroups.Items.Add(group);
-                if (!_user.IsAdmin) continue;
-
-                var node = new Node {Tag = group};
-                node.Cells[1].Text = group.Name;
-                node.Cells[2].Text = group.Devices.Count.ToString();
-                advTreeGroups.Nodes.Add(node);
-            }
-        }
-
+        #region users
         private void setUsers()
         {
             var users = User.GetAllUsers();
+            advTreeUsers.ClearAndDisposeAllNodes();
 
             foreach (var user in users)
             {
-                var node = new Node {Tag = user};
+                var node = new Node { Tag = user };
                 node.Cells[1].Text = user.Name;
-                node.Cells[2].Text = user.Privileges.ToString();
+                node.Cells[2].Text = user.Privileges.Count.ToString();
                 advTreeUsers.Nodes.Add(node);
             }
         }
 
+        private void buttonAddUser_Click(object sender, System.EventArgs e)
+        {
+            var user = new User("new user") {Password = "DefaultPassword"};
+            var node = new Node {Tag = user};
+            node.Cells[1].Text = user.Name;
+            node.Cells[2].Text = user.Privileges.Count.ToString();
+
+            advTreeUsers.Nodes.Add(node);
+            advTreeUsers.SelectedNode = node;
+            advPropertyGridUsers.SelectedObject = advTreeUsers.SelectedNode;
+
+            user.Insert();
+        }
+
+        private void buttonDeleteUser_Click(object sender, System.EventArgs e)
+        {
+            if (advTreeUsers.SelectedNode == null) return;
+
+            var node = advTreeUsers.SelectedNode;
+            var user = node.Tag as User;
+
+            if (MessageBox.Show(@"Are you sure you want to delete " + user.Name + "?", "Warning",MessageBoxButtons.YesNo) == DialogResult.No) return;
+
+            if (user.Remove()) advTreeUsers.SelectedNode.Remove();
+        }
+
+        private void buttonEditUserPrivileges_Click(object sender, System.EventArgs e)
+        {
+            //Todo: Implement user privileges screen
+        }
+        #endregion
+
+        #region device
         private void setDevices()
         {
             var devices = Device.GetAllDevices();
+            advTreeDevices.ClearAndDisposeAllNodes();
 
             foreach (var device in devices)
             {
@@ -76,11 +96,56 @@ namespace ProftaakSmartHome.Forms
                 advTreeDevices.Nodes.Add(node);
             }
         }
+        #endregion
 
-        private void buttonAddUser_Click(object sender, System.EventArgs e)
+        #region groups
+        private void setGroups()
         {
-            var user = new User("new user");
-            advPropertyGridUsers.SelectedObject = user;
+            var groups = _user.IsAdmin ? Group.GetAllGroups() : new List<Group>(_user.Privileges);
+            advTreeGroups.ClearAndDisposeAllNodes();
+
+            foreach (var group in groups)
+            {
+                comboBoxGroups.Items.Add(group);
+                if (!_user.IsAdmin) continue;
+
+                var node = new Node { Tag = group };
+                node.Cells[1].Text = group.Name;
+                node.Cells[2].Text = group.Devices.Count.ToString();
+                advTreeGroups.Nodes.Add(node);
+            }
         }
+
+        private void buttonAddGroup_Click(object sender, System.EventArgs e)
+        {
+            var group = new Group("New group");
+            var node = new Node { Tag = group };
+            node.Cells[1].Text = group.Name;
+            node.Cells[2].Text = group.Devices.Count.ToString();
+
+            advTreeGroups.Nodes.Add(node);
+            advTreeGroups.SelectedNode = node;
+            advPropertyGridGroup.SelectedObject = advTreeGroups.SelectedNode;
+
+            group.Insert();
+        }
+
+        private void buttonEditGroupDevices_Click(object sender, System.EventArgs e)
+        {
+            //Todo: Implement edit group devices screen
+        }
+
+        private void buttonDeleteGroup_Click(object sender, System.EventArgs e)
+        {
+            if (advTreeGroups.SelectedNode == null) return;
+
+            var node = advTreeGroups.SelectedNode;
+            var group = node.Tag as Group;
+
+            if (MessageBox.Show(@"Are you sure you want to delete " + group.Name + "?", "Warning", MessageBoxButtons.YesNo) == DialogResult.No) return;
+
+            if (group.Remove()) advTreeUsers.SelectedNode.Remove();
+        }
+        #endregion
     }
 }

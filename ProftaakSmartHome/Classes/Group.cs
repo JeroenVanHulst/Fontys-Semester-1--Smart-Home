@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
@@ -13,16 +15,17 @@ namespace ProftaakSmartHome.Classes
 
         public List<Device> Devices { get; private set; }
 
-        public Group(int id, string name)
+        public Group(string name)
         {
-            Id = id;
             Name = name;
             Devices = new List<Device>();
         }
 
-        public Group(int id, string name, List<Device> devices) : this(id, name)
+        public Group(int id, string name, List<Device> devices)
         {
             Devices.AddRange(devices);
+            Id = id;
+            Name = name;
         }
 
         public void Update()
@@ -35,14 +38,22 @@ namespace ProftaakSmartHome.Classes
             Database.CloseConnection();
         }
 
-        public void Remove()
+        public bool Remove()
         {
             var query = "DELETE FROM device_group WHERE groupid=" + Id + "; DELETE FROM groups WHERE id=" + Id;
             Database.Query = query;
 
-            Database.OpenConnection();
-            Database.Command.ExecuteNonQuery();
-            Database.CloseConnection();
+            try
+            {
+                Database.OpenConnection();
+                Database.Command.ExecuteNonQuery();
+                Database.CloseConnection();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Insert()

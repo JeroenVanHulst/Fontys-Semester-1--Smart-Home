@@ -6,7 +6,7 @@
         string Name { get; set; }
 
         void Update();
-        void Remove();
+        bool Remove();
         void Insert();
     }
 }

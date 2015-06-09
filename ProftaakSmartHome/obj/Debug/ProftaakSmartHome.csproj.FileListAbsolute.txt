@@ -45,3 +45,15 @@ C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.Lo
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
 C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.MainForm.resources
+D:\Development\Proftaak S1P2\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.exe.config
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.exe
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.pdb
+D:\Development\Proftaak S1P2\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.exe
+D:\Development\Proftaak S1P2\ProftaakSmartHome\bin\Debug\ProftaakSmartHome.pdb
+D:\Development\Proftaak S1P2\ProftaakSmartHome\bin\Debug\DevComponents.DotNetBar2.dll
+D:\Development\Proftaak S1P2\ProftaakSmartHome\bin\Debug\System.Data.SQLite.dll
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csprojResolveAssemblyReference.cache
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.MainForm.resources
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
