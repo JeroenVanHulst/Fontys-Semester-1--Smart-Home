@@ -130,6 +130,18 @@ namespace ProftaakSmartHome.Forms
             group.Insert();
         }
 
+
+        }
+
+        private void advPropertyGridGroup_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void advPropertyGridDevices_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
         private void buttonEditGroupDevices_Click(object sender, System.EventArgs e)
         {
             //Todo: Implement edit group devices screen
