@@ -65,7 +65,22 @@ namespace ProftaakSmartHome.Forms
 
         private void setDevices()
         {
-            
+            var devices = Device.GetAllDevices();
+
+            foreach (var device in devices)
+            {
+                var node = new Node { Tag = device };
+                node.Cells[1].Text = device.Name;
+                node.Cells[2].Text = device.Type.ToString();
+                node.Cells[3].Text = device.Value.ToString();
+                advTree1.Nodes.Add(node);
+            }
+        }
+
+        private void buttonAddUser_Click(object sender, System.EventArgs e)
+        {
+            var user = new User("new user");
+            advPropertyGridUsers.SelectedObject = user;
         }
     }
 }

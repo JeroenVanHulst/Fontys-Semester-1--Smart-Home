@@ -1,4 +1,5 @@
-﻿using ProftaakSmartHome.Interfaces;
+﻿using System.Collections.Generic;
+using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
 {
