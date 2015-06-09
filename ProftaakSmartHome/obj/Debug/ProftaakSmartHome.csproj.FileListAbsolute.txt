@@ -57,3 +57,6 @@ D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms
 D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.MainForm.resources
 D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Properties.Resources.resources
 D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.csproj.GenerateResource.Cache
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.GroupDevices.resources
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LightControl.resources
+D:\Development\Proftaak S1P2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.UserGroups.resources

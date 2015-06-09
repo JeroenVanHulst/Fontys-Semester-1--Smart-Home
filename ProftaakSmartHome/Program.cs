@@ -18,7 +18,7 @@ namespace ProftaakSmartHome
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new User("test") {IsAdmin = true}));
+            Application.Run(new LoginForm());
         }
     }
 }
