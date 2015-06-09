@@ -5,7 +5,7 @@ using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
 {
-    public enum DeviceType
+    public enum DeviceType // These are represented as 0, 1, 2, 3, etc in the database
     {
         Light,
         DimmableLight,

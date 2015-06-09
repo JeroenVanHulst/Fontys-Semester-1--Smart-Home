@@ -51,7 +51,7 @@ namespace ProftaakSmartHome.Classes
             Password = UserService.ConvertStringToMd5(password);
         }
 
-        #region Database Querys
+        #region Database Queries
 
         public void Update()
         {
@@ -83,6 +83,7 @@ namespace ProftaakSmartHome.Classes
 
         public void Insert()
         {
+            // TODO: Inserting users as admin. Determine if it wants 'true' or '1'.
             var query = "INSERT INTO user (username, password) VALUES ('" + Name + "', '" + Password + "')";
             Database.Query = query;
 
@@ -102,7 +103,10 @@ namespace ProftaakSmartHome.Classes
             var reader = Database.Command.ExecuteReader();
             while (reader.Read())
             {
-                var user = new User((int) reader["userid"], reader["username"].ToString(), reader["password"].ToString());
+                var user = new User((int) reader["userid"], reader["username"].ToString(), reader["password"].ToString())
+                {
+                    IsAdmin = Convert.ToBoolean(reader["admin"])
+                };
                 users.Add(user);
             }
 
@@ -132,7 +136,10 @@ namespace ProftaakSmartHome.Classes
             var reader = Database.Command.ExecuteReader();
             if(reader.HasRows)
             {
-                user = new User((int)reader["userid"], reader["username"].ToString(), reader["password"].ToString());
+                user = new User((int) reader["userid"], reader["username"].ToString(), reader["password"].ToString())
+                {
+                    IsAdmin = Convert.ToBoolean(reader["admin"])
+                };
 
                 var queryPrivileges = "SELECT * FROM permission WHERE userid = " + user.Id;
                 Database.Query = queryPrivileges;
@@ -163,7 +170,10 @@ namespace ProftaakSmartHome.Classes
             var reader = Database.Command.ExecuteReader();
             if (reader.HasRows)
             {
-                user = new User((int)reader["userid"], reader["username"].ToString(), reader["password"].ToString());
+                user = new User((int)reader["userid"], reader["username"].ToString(), reader["password"].ToString())
+                {
+                    IsAdmin = Convert.ToBoolean(reader["admin"])
+                };
 
                 var queryPrivileges = "SELECT * FROM permission WHERE userid=" + user.Id;
                 Database.Query = queryPrivileges;
