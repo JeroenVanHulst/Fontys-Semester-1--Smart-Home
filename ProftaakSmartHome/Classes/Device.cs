@@ -19,8 +19,9 @@ namespace ProftaakSmartHome.Classes
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Value;
-        public DeviceType Type;
+        public int Value { get; set; }
+        public bool OnOff { get; set; }
+        public DeviceType Type { get; set; }
 
         public Device(int id, string name, int value, DeviceType type)
         {
@@ -84,6 +85,11 @@ namespace ProftaakSmartHome.Classes
             }
 
             return devices;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

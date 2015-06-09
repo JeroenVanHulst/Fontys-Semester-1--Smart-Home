@@ -67,7 +67,6 @@
             this.node3 = new DevComponents.AdvTree.Node();
             this.nodeConnector3 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle3 = new DevComponents.DotNetBar.ElementStyle();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabDevices.SuspendLayout();
@@ -93,7 +92,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(948, 562);
+            this.tabControl1.Size = new System.Drawing.Size(948, 561);
             this.tabControl1.TabIndex = 0;
             // 
             // tabControl
@@ -106,7 +105,7 @@
             this.tabControl.Location = new System.Drawing.Point(4, 22);
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabControl.Size = new System.Drawing.Size(940, 536);
+            this.tabControl.Size = new System.Drawing.Size(940, 535);
             this.tabControl.TabIndex = 0;
             this.tabControl.Text = "Control";
             // 
@@ -130,9 +129,9 @@
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(3, 39);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(934, 494);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(934, 496);
             this.flowLayoutPanel.TabIndex = 0;
             // 
             // tabDevices
@@ -142,7 +141,7 @@
             this.tabDevices.Location = new System.Drawing.Point(4, 22);
             this.tabDevices.Name = "tabDevices";
             this.tabDevices.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDevices.Size = new System.Drawing.Size(940, 536);
+            this.tabDevices.Size = new System.Drawing.Size(940, 535);
             this.tabDevices.TabIndex = 1;
             this.tabDevices.Text = "Devices";
             this.tabDevices.UseVisualStyleBackColor = true;
@@ -233,7 +232,7 @@
             this.tabGroups.Location = new System.Drawing.Point(4, 22);
             this.tabGroups.Name = "tabGroups";
             this.tabGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGroups.Size = new System.Drawing.Size(940, 536);
+            this.tabGroups.Size = new System.Drawing.Size(940, 535);
             this.tabGroups.TabIndex = 2;
             this.tabGroups.Text = "Groups";
             this.tabGroups.UseVisualStyleBackColor = true;
@@ -356,7 +355,7 @@
             this.tabUsers.Location = new System.Drawing.Point(4, 22);
             this.tabUsers.Name = "tabUsers";
             this.tabUsers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUsers.Size = new System.Drawing.Size(940, 536);
+            this.tabUsers.Size = new System.Drawing.Size(940, 535);
             this.tabUsers.TabIndex = 3;
             this.tabUsers.Text = "Users";
             this.tabUsers.UseVisualStyleBackColor = true;
@@ -467,25 +466,12 @@
             this.elementStyle3.Name = "elementStyle3";
             this.elementStyle3.TextColor = System.Drawing.SystemColors.ControlText;
             // 
-            // buttonSave
-            // 
-            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(801, 578);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(155, 47);
-            this.buttonSave.TabIndex = 4;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.ClientSize = new System.Drawing.Size(972, 628);
-            this.Controls.Add(this.buttonSave);
+            this.ClientSize = new System.Drawing.Size(972, 585);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -544,7 +530,6 @@
         private System.Windows.Forms.Button buttonEditGroupDevices;
         private System.Windows.Forms.Button buttonDeleteGroup;
         private System.Windows.Forms.Button buttonAddGroup;
-        private System.Windows.Forms.Button buttonSave;
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridDevices;
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridGroup;
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridUsers;

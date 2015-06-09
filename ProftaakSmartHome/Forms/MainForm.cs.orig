@@ -15,22 +15,12 @@ namespace ProftaakSmartHome.Forms
             InitializeComponent();
             _user = user;
             setControls();
+            setGroups();
 
             if (_user.IsAdmin)
             {
-                setGroups();
                 setUsers();
                 setDevices();
-            }
-
-            setDevicesControl();
-        }
-
-        private void setDevicesControl()
-        {
-            foreach (var group in _user.Privileges)
-            {
-                group.Devices.ForEach(x => flowLayoutPanel.Controls.Add(new LightControl(x)));
             }
         }
 
@@ -41,6 +31,7 @@ namespace ProftaakSmartHome.Forms
             tabDevices.Visible = false;
             tabGroups.Visible = false;
             tabUsers.Visible = false;
+            buttonSave.Enabled = false;
         }
 
         #region users
@@ -86,11 +77,7 @@ namespace ProftaakSmartHome.Forms
 
         private void buttonEditUserPrivileges_Click(object sender, System.EventArgs e)
         {
-            if (advTreeUsers.SelectedNode == null) return;
-
-            var groups = (from Node node in advTreeGroups.Nodes select node.Tag as Group).ToList();
-            var userGroupForm = new UserGroups(advTreeUsers.SelectedNode.Tag as User, groups);
-            userGroupForm.Show();
+            //Todo: Implement user privileges screen
         }
         #endregion
 
@@ -128,6 +115,7 @@ namespace ProftaakSmartHome.Forms
                 advTreeGroups.Nodes.Add(node);
             }
         }
+<<<<<<< local
 
         private void buttonAddGroup_Click(object sender, System.EventArgs e)
         {
@@ -142,13 +130,10 @@ namespace ProftaakSmartHome.Forms
 
             group.Insert();
         }
+
         private void buttonEditGroupDevices_Click(object sender, System.EventArgs e)
         {
-            if (advTreeGroups.SelectedNode == null) return;
-
-            var devices = (from Node node in advTreeDevices.Nodes select node.Tag as Device).ToList();
-            var groupDeviceForm = new GroupDevices(advTreeGroups.SelectedNode.Tag as Group, devices);
-            groupDeviceForm.Show();
+            //Todo: Implement edit group devices screen
         }
 
         private void buttonDeleteGroup_Click(object sender, System.EventArgs e)
@@ -163,22 +148,22 @@ namespace ProftaakSmartHome.Forms
             if (group.Remove()) advTreeUsers.SelectedNode.Remove();
         }
         #endregion
+=======
 
-        #region events
         private void advPropertyGridUsers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            ((User)advTreeUsers.SelectedNode.Tag).Update();
+
         }
 
         private void advPropertyGridGroup_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            ((Group)advTreeGroups.SelectedNode.Tag).Update();
+
         }
 
         private void advPropertyGridDevices_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            ((Device)advTreeDevices.SelectedNode.Tag).Update();
+
         }
-        #endregion
+>>>>>>> other
     }
 }
