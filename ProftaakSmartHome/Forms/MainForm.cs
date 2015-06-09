@@ -73,7 +73,7 @@ namespace ProftaakSmartHome.Forms
                 node.Cells[1].Text = device.Name;
                 node.Cells[2].Text = device.Type.ToString();
                 node.Cells[3].Text = device.Value.ToString();
-                advTree1.Nodes.Add(node);
+                advTreeDevices.Nodes.Add(node);
             }
         }
 

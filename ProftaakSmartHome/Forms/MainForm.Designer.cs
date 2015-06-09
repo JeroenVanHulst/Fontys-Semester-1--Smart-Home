@@ -32,9 +32,12 @@
             this.tabControl = new System.Windows.Forms.TabPage();
             this.comboBoxGroups = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabDevices = new System.Windows.Forms.TabPage();
-            this.advTree1 = new DevComponents.AdvTree.AdvTree();
+            this.buttonDeleteDevice = new System.Windows.Forms.Button();
+            this.buttonAddDevice = new System.Windows.Forms.Button();
+            this.advPropertyGridDevices = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.advTreeDevices = new DevComponents.AdvTree.AdvTree();
             this.columnHeader1 = new DevComponents.AdvTree.ColumnHeader();
             this.columnHeader2 = new DevComponents.AdvTree.ColumnHeader();
             this.columnHeader3 = new DevComponents.AdvTree.ColumnHeader();
@@ -43,9 +46,10 @@
             this.nodeConnector1 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle1 = new DevComponents.DotNetBar.ElementStyle();
             this.tabGroups = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.advPropertyGridGroup = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.buttonEditGroupDevices = new System.Windows.Forms.Button();
+            this.buttonDeleteGroup = new System.Windows.Forms.Button();
+            this.buttonAddGroup = new System.Windows.Forms.Button();
             this.advTreeGroups = new DevComponents.AdvTree.AdvTree();
             this.columnHeader5 = new DevComponents.AdvTree.ColumnHeader();
             this.columnHeader6 = new DevComponents.AdvTree.ColumnHeader();
@@ -54,8 +58,9 @@
             this.nodeConnector2 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle2 = new DevComponents.DotNetBar.ElementStyle();
             this.tabUsers = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.advPropertyGridUsers = new DevComponents.DotNetBar.AdvPropertyGrid();
+            this.buttonDeleteUser = new System.Windows.Forms.Button();
+            this.buttonEditUserPrivileges = new System.Windows.Forms.Button();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.advTreeUsers = new DevComponents.AdvTree.AdvTree();
             this.columnHeader9 = new DevComponents.AdvTree.ColumnHeader();
@@ -65,22 +70,17 @@
             this.nodeConnector3 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle3 = new DevComponents.DotNetBar.ElementStyle();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.advPropertyGridUsers = new DevComponents.DotNetBar.AdvPropertyGrid();
-            this.advPropertyGrid2 = new DevComponents.DotNetBar.AdvPropertyGrid();
-            this.advPropertyGrid3 = new DevComponents.DotNetBar.AdvPropertyGrid();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabDevices.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.advTree1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridDevices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advTreeDevices)).BeginInit();
             this.tabGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advTreeGroups)).BeginInit();
             this.tabUsers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.advTreeUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advTreeUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -103,7 +103,7 @@
             this.tabControl.BackColor = System.Drawing.Color.White;
             this.tabControl.Controls.Add(this.comboBoxGroups);
             this.tabControl.Controls.Add(this.label1);
-            this.tabControl.Controls.Add(this.flowLayoutPanel1);
+            this.tabControl.Controls.Add(this.flowLayoutPanel);
             this.tabControl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabControl.Location = new System.Drawing.Point(4, 22);
             this.tabControl.Name = "tabControl";
@@ -129,20 +129,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Group:";
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 39);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(934, 494);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(3, 39);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(934, 494);
+            this.flowLayoutPanel.TabIndex = 0;
             // 
             // tabDevices
             // 
-            this.tabDevices.Controls.Add(this.button7);
-            this.tabDevices.Controls.Add(this.button1);
-            this.tabDevices.Controls.Add(this.advPropertyGrid3);
-            this.tabDevices.Controls.Add(this.advTree1);
+            this.tabDevices.Controls.Add(this.buttonDeleteDevice);
+            this.tabDevices.Controls.Add(this.buttonAddDevice);
+            this.tabDevices.Controls.Add(this.advPropertyGridDevices);
+            this.tabDevices.Controls.Add(this.advTreeDevices);
             this.tabDevices.Location = new System.Drawing.Point(4, 22);
             this.tabDevices.Name = "tabDevices";
             this.tabDevices.Padding = new System.Windows.Forms.Padding(3);
@@ -151,31 +151,64 @@
             this.tabDevices.Text = "Devices";
             this.tabDevices.UseVisualStyleBackColor = true;
             // 
-            // advTree1
+            // buttonDeleteDevice
             // 
-            this.advTree1.AccessibleRole = System.Windows.Forms.AccessibleRole.Outline;
-            this.advTree1.AllowDrop = true;
-            this.advTree1.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonDeleteDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonDeleteDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteDevice.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteDevice.Location = new System.Drawing.Point(779, 59);
+            this.buttonDeleteDevice.Name = "buttonDeleteDevice";
+            this.buttonDeleteDevice.Size = new System.Drawing.Size(155, 47);
+            this.buttonDeleteDevice.TabIndex = 9;
+            this.buttonDeleteDevice.Text = "Delete";
+            this.buttonDeleteDevice.UseVisualStyleBackColor = false;
+            // 
+            // buttonAddDevice
+            // 
+            this.buttonAddDevice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonAddDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddDevice.ForeColor = System.Drawing.Color.White;
+            this.buttonAddDevice.Location = new System.Drawing.Point(779, 6);
+            this.buttonAddDevice.Name = "buttonAddDevice";
+            this.buttonAddDevice.Size = new System.Drawing.Size(155, 47);
+            this.buttonAddDevice.TabIndex = 8;
+            this.buttonAddDevice.Text = "Add";
+            this.buttonAddDevice.UseVisualStyleBackColor = false;
+            // 
+            // advPropertyGridDevices
+            // 
+            this.advPropertyGridDevices.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.advPropertyGridDevices.Location = new System.Drawing.Point(779, 165);
+            this.advPropertyGridDevices.Name = "advPropertyGridDevices";
+            this.advPropertyGridDevices.Size = new System.Drawing.Size(155, 365);
+            this.advPropertyGridDevices.TabIndex = 7;
+            this.advPropertyGridDevices.Text = "advPropertyGrid3";
+            // 
+            // advTreeDevices
+            // 
+            this.advTreeDevices.AccessibleRole = System.Windows.Forms.AccessibleRole.Outline;
+            this.advTreeDevices.AllowDrop = true;
+            this.advTreeDevices.BackColor = System.Drawing.SystemColors.Window;
             // 
             // 
             // 
-            this.advTree1.BackgroundStyle.Class = "TreeBorderKey";
-            this.advTree1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.advTree1.Columns.Add(this.columnHeader1);
-            this.advTree1.Columns.Add(this.columnHeader2);
-            this.advTree1.Columns.Add(this.columnHeader3);
-            this.advTree1.Columns.Add(this.columnHeader4);
-            this.advTree1.Location = new System.Drawing.Point(6, 6);
-            this.advTree1.Name = "advTree1";
-            this.advTree1.Nodes.AddRange(new DevComponents.AdvTree.Node[] {
+            this.advTreeDevices.BackgroundStyle.Class = "TreeBorderKey";
+            this.advTreeDevices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.advTreeDevices.Columns.Add(this.columnHeader1);
+            this.advTreeDevices.Columns.Add(this.columnHeader2);
+            this.advTreeDevices.Columns.Add(this.columnHeader3);
+            this.advTreeDevices.Columns.Add(this.columnHeader4);
+            this.advTreeDevices.Location = new System.Drawing.Point(6, 6);
+            this.advTreeDevices.Name = "advTreeDevices";
+            this.advTreeDevices.Nodes.AddRange(new DevComponents.AdvTree.Node[] {
             this.node1});
-            this.advTree1.NodesConnector = this.nodeConnector1;
-            this.advTree1.NodeStyle = this.elementStyle1;
-            this.advTree1.PathSeparator = ";";
-            this.advTree1.Size = new System.Drawing.Size(767, 524);
-            this.advTree1.Styles.Add(this.elementStyle1);
-            this.advTree1.TabIndex = 0;
-            this.advTree1.Text = "advTree1";
+            this.advTreeDevices.NodesConnector = this.nodeConnector1;
+            this.advTreeDevices.NodeStyle = this.elementStyle1;
+            this.advTreeDevices.PathSeparator = ";";
+            this.advTreeDevices.Size = new System.Drawing.Size(767, 524);
+            this.advTreeDevices.Styles.Add(this.elementStyle1);
+            this.advTreeDevices.TabIndex = 0;
+            this.advTreeDevices.Text = "advTree1";
             // 
             // columnHeader1
             // 
@@ -219,10 +252,10 @@
             // 
             // tabGroups
             // 
-            this.tabGroups.Controls.Add(this.advPropertyGrid2);
-            this.tabGroups.Controls.Add(this.button6);
-            this.tabGroups.Controls.Add(this.button5);
-            this.tabGroups.Controls.Add(this.button4);
+            this.tabGroups.Controls.Add(this.advPropertyGridGroup);
+            this.tabGroups.Controls.Add(this.buttonEditGroupDevices);
+            this.tabGroups.Controls.Add(this.buttonDeleteGroup);
+            this.tabGroups.Controls.Add(this.buttonAddGroup);
             this.tabGroups.Controls.Add(this.advTreeGroups);
             this.tabGroups.Location = new System.Drawing.Point(4, 22);
             this.tabGroups.Name = "tabGroups";
@@ -232,41 +265,50 @@
             this.tabGroups.Text = "Groups";
             this.tabGroups.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // advPropertyGridGroup
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(779, 59);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(155, 47);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Edit devices";
-            this.button6.UseVisualStyleBackColor = false;
+            this.advPropertyGridGroup.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.advPropertyGridGroup.Location = new System.Drawing.Point(779, 165);
+            this.advPropertyGridGroup.Name = "advPropertyGridGroup";
+            this.advPropertyGridGroup.Size = new System.Drawing.Size(155, 365);
+            this.advPropertyGridGroup.TabIndex = 7;
+            this.advPropertyGridGroup.Text = "advPropertyGrid2";
             // 
-            // button5
+            // buttonEditGroupDevices
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(779, 112);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(155, 47);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonEditGroupDevices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonEditGroupDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditGroupDevices.ForeColor = System.Drawing.Color.White;
+            this.buttonEditGroupDevices.Location = new System.Drawing.Point(779, 59);
+            this.buttonEditGroupDevices.Name = "buttonEditGroupDevices";
+            this.buttonEditGroupDevices.Size = new System.Drawing.Size(155, 47);
+            this.buttonEditGroupDevices.TabIndex = 6;
+            this.buttonEditGroupDevices.Text = "Edit devices";
+            this.buttonEditGroupDevices.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // buttonDeleteGroup
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(779, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 47);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonDeleteGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonDeleteGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteGroup.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteGroup.Location = new System.Drawing.Point(779, 112);
+            this.buttonDeleteGroup.Name = "buttonDeleteGroup";
+            this.buttonDeleteGroup.Size = new System.Drawing.Size(155, 47);
+            this.buttonDeleteGroup.TabIndex = 5;
+            this.buttonDeleteGroup.Text = "Delete";
+            this.buttonDeleteGroup.UseVisualStyleBackColor = false;
+            // 
+            // buttonAddGroup
+            // 
+            this.buttonAddGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonAddGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddGroup.ForeColor = System.Drawing.Color.White;
+            this.buttonAddGroup.Location = new System.Drawing.Point(779, 6);
+            this.buttonAddGroup.Name = "buttonAddGroup";
+            this.buttonAddGroup.Size = new System.Drawing.Size(155, 47);
+            this.buttonAddGroup.TabIndex = 4;
+            this.buttonAddGroup.Text = "Add";
+            this.buttonAddGroup.UseVisualStyleBackColor = false;
             // 
             // advTreeGroups
             // 
@@ -330,8 +372,8 @@
             // tabUsers
             // 
             this.tabUsers.Controls.Add(this.advPropertyGridUsers);
-            this.tabUsers.Controls.Add(this.button3);
-            this.tabUsers.Controls.Add(this.button2);
+            this.tabUsers.Controls.Add(this.buttonDeleteUser);
+            this.tabUsers.Controls.Add(this.buttonEditUserPrivileges);
             this.tabUsers.Controls.Add(this.buttonAddUser);
             this.tabUsers.Controls.Add(this.advTreeUsers);
             this.tabUsers.Location = new System.Drawing.Point(4, 22);
@@ -342,29 +384,38 @@
             this.tabUsers.Text = "Users";
             this.tabUsers.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // advPropertyGridUsers
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(779, 112);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 47);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = false;
+            this.advPropertyGridUsers.GridLinesColor = System.Drawing.Color.WhiteSmoke;
+            this.advPropertyGridUsers.Location = new System.Drawing.Point(779, 165);
+            this.advPropertyGridUsers.Name = "advPropertyGridUsers";
+            this.advPropertyGridUsers.Size = new System.Drawing.Size(155, 365);
+            this.advPropertyGridUsers.TabIndex = 6;
+            this.advPropertyGridUsers.Text = "advPropertyGrid1";
             // 
-            // button2
+            // buttonDeleteUser
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(779, 59);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 47);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Edit privileges";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonDeleteUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteUser.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteUser.Location = new System.Drawing.Point(779, 112);
+            this.buttonDeleteUser.Name = "buttonDeleteUser";
+            this.buttonDeleteUser.Size = new System.Drawing.Size(155, 47);
+            this.buttonDeleteUser.TabIndex = 5;
+            this.buttonDeleteUser.Text = "Delete";
+            this.buttonDeleteUser.UseVisualStyleBackColor = false;
+            // 
+            // buttonEditUserPrivileges
+            // 
+            this.buttonEditUserPrivileges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
+            this.buttonEditUserPrivileges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditUserPrivileges.ForeColor = System.Drawing.Color.White;
+            this.buttonEditUserPrivileges.Location = new System.Drawing.Point(779, 59);
+            this.buttonEditUserPrivileges.Name = "buttonEditUserPrivileges";
+            this.buttonEditUserPrivileges.Size = new System.Drawing.Size(155, 47);
+            this.buttonEditUserPrivileges.TabIndex = 4;
+            this.buttonEditUserPrivileges.Text = "Edit privileges";
+            this.buttonEditUserPrivileges.UseVisualStyleBackColor = false;
             // 
             // buttonAddUser
             // 
@@ -448,57 +499,6 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             // 
-            // advPropertyGridUsers
-            // 
-            this.advPropertyGridUsers.GridLinesColor = System.Drawing.Color.WhiteSmoke;
-            this.advPropertyGridUsers.Location = new System.Drawing.Point(779, 165);
-            this.advPropertyGridUsers.Name = "advPropertyGridUsers";
-            this.advPropertyGridUsers.Size = new System.Drawing.Size(155, 365);
-            this.advPropertyGridUsers.TabIndex = 6;
-            this.advPropertyGridUsers.Text = "advPropertyGrid1";
-            // 
-            // advPropertyGrid2
-            // 
-            this.advPropertyGrid2.GridLinesColor = System.Drawing.Color.WhiteSmoke;
-            this.advPropertyGrid2.Location = new System.Drawing.Point(779, 165);
-            this.advPropertyGrid2.Name = "advPropertyGrid2";
-            this.advPropertyGrid2.Size = new System.Drawing.Size(155, 365);
-            this.advPropertyGrid2.TabIndex = 7;
-            this.advPropertyGrid2.Text = "advPropertyGrid2";
-            // 
-            // advPropertyGrid3
-            // 
-            this.advPropertyGrid3.GridLinesColor = System.Drawing.Color.WhiteSmoke;
-            this.advPropertyGrid3.Location = new System.Drawing.Point(779, 165);
-            this.advPropertyGrid3.Name = "advPropertyGrid3";
-            this.advPropertyGrid3.Size = new System.Drawing.Size(155, 365);
-            this.advPropertyGrid3.TabIndex = 7;
-            this.advPropertyGrid3.Text = "advPropertyGrid3";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(779, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 47);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(66)))), ((int)(((byte)(145)))));
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(779, 59);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(155, 47);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "Delete";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,14 +514,14 @@
             this.tabControl.ResumeLayout(false);
             this.tabControl.PerformLayout();
             this.tabDevices.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.advTree1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridDevices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advTreeDevices)).EndInit();
             this.tabGroups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advTreeGroups)).EndInit();
             this.tabUsers.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.advTreeUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advPropertyGridUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advPropertyGrid3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advTreeUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -533,8 +533,8 @@
         private System.Windows.Forms.TabPage tabDevices;
         private System.Windows.Forms.ComboBox comboBoxGroups;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private DevComponents.AdvTree.AdvTree advTree1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private DevComponents.AdvTree.AdvTree advTreeDevices;
         private DevComponents.AdvTree.Node node1;
         private DevComponents.AdvTree.NodeConnector nodeConnector1;
         private DevComponents.DotNetBar.ElementStyle elementStyle1;
@@ -551,8 +551,8 @@
         private DevComponents.AdvTree.Node node2;
         private DevComponents.AdvTree.NodeConnector nodeConnector2;
         private DevComponents.DotNetBar.ElementStyle elementStyle2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonDeleteUser;
+        private System.Windows.Forms.Button buttonEditUserPrivileges;
         private System.Windows.Forms.Button buttonAddUser;
         private DevComponents.AdvTree.AdvTree advTreeUsers;
         private DevComponents.AdvTree.ColumnHeader columnHeader9;
@@ -561,15 +561,15 @@
         private DevComponents.AdvTree.Node node3;
         private DevComponents.AdvTree.NodeConnector nodeConnector3;
         private DevComponents.DotNetBar.ElementStyle elementStyle3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonEditGroupDevices;
+        private System.Windows.Forms.Button buttonDeleteGroup;
+        private System.Windows.Forms.Button buttonAddGroup;
         private System.Windows.Forms.Button buttonSave;
-        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGrid3;
-        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGrid2;
+        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridDevices;
+        private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridGroup;
         private DevComponents.DotNetBar.AdvPropertyGrid advPropertyGridUsers;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDeleteDevice;
+        private System.Windows.Forms.Button buttonAddDevice;
 
     }
 }
