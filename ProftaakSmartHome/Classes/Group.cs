@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
