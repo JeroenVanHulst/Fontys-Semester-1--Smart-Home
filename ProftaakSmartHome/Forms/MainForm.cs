@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevComponents.AdvTree;
 using ProftaakSmartHome.Classes;
+using ProftaakSmartHome.Services;
 
 namespace ProftaakSmartHome.Forms
 {
     public partial class MainForm : Form
     {
         private User _user;
+        private FileSystemWatcher _watcher;
 
         public MainForm(User user)
         {
@@ -24,8 +28,23 @@ namespace ProftaakSmartHome.Forms
             }
 
             setDevicesControl();
+
+            _watcher = new FileSystemWatcher
+            {
+                NotifyFilter =
+                    NotifyFilters.LastAccess | NotifyFilters.LastWrite // These are the flags of change types to watch for
+                    | NotifyFilters.FileName | NotifyFilters.DirectoryName,
+                Filter = Database.Filename
+            };
+            _watcher.Changed += DatabaseOnChanged;
+            _watcher.Deleted += DatabaseOnDeleted;
+            _watcher.Error += DatabaseOnError;
+            _watcher.EnableRaisingEvents = true; // Begin watching
         }
 
+        /// <summary>
+        /// Adds LightControl for every device the user has permission for
+        /// </summary>
         private void setDevicesControl()
         {
             foreach (var group in _user.Privileges)
@@ -178,6 +197,27 @@ namespace ProftaakSmartHome.Forms
         private void advPropertyGridDevices_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             ((Device)advTreeDevices.SelectedNode.Tag).Update();
+        }
+
+        private void DatabaseOnError(object sender, ErrorEventArgs e)
+        {
+            // Actions for when the database can't be monitored for changes for some reason
+            //MessageBox.Show(e.GetException().Message);
+        }
+
+        private void DatabaseOnDeleted(object sender, FileSystemEventArgs e)
+        {
+            // Actions for when the database is deleted
+            //MessageBox.Show("{0} was deleted", e.Name);
+        }
+
+        private void DatabaseOnChanged(object sender, FileSystemEventArgs e)
+        {
+            // Actions for when the database is changed
+            Database.PreviousHash = DatabaseService.GetMd5HashFromFile(Database.Filename);
+
+            // TODO: Determine what exactly needs to be executed when this happens
+            setDevices();
         }
         #endregion
     }

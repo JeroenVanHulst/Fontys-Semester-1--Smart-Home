@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProftaakSmartHome.Classes
 {
     class Database
     {
-        private static readonly string _filename = "Database.db";
         private static SQLiteConnection _connection;
         private static SQLiteCommand _command;
 
+        public static readonly string Filename = "Database.db";
         public static SQLiteCommand Command { get { return _command; } }
+        public static Guid PreviousHash;
+
         public static string Query
         {
             set
@@ -27,7 +27,7 @@ namespace ProftaakSmartHome.Classes
         public static void OpenConnection()
         {
             // Checks if the connection is not already open
-            if (_connection.State != System.Data.ConnectionState.Open)
+            if (_connection.State != ConnectionState.Open)
             {
                 _connection.Open();
             }
@@ -36,28 +36,36 @@ namespace ProftaakSmartHome.Classes
         public static void CloseConnection()
         {
             // Checks if the connection is not already closed
-            if (_connection.State != System.Data.ConnectionState.Closed)
+            if (_connection.State != ConnectionState.Closed)
             {
                 _connection.Close();
             }
         }
 
+        /// <summary>
+        /// Checks whether the database exists or not. If it doesn't, generates an empty database and fills it with the default schemas.
+        /// Initializes the database connection if it isn't connected.
+        /// </summary>
         private static void PrepareConnection()
         {
-            var createNew = !File.Exists(_filename);
+            var createNew = !File.Exists(Filename);
 
             if (createNew)
             {
-                SQLiteConnection.CreateFile(_filename);
+                SQLiteConnection.CreateFile(Filename);
                 GenerateSchemas();
             }
 
             if (_connection == null)
             {
-                _connection = new SQLiteConnection(String.Format("Data Source={0};Version=3", _filename));
+                _connection = new SQLiteConnection(String.Format("Data Source={0};Version=3", Filename));
             }
         }
 
+        /// <summary>
+        /// Generates DB schemas based on the SQL statements in databaseExport.sql
+        /// Default tables are: device, device_group, devicetypes, groups, permissions, users
+        /// </summary>
         private static void GenerateSchemas()
         {
             OpenConnection();
