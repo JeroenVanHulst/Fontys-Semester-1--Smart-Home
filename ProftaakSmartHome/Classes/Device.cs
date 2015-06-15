@@ -32,7 +32,8 @@ namespace ProftaakSmartHome.Classes
         
         public void Update()
         {
-            var query = "UPDATE device SET name = '" + Name + "', value =" + Value + ", type =" + (int) Type;
+            var query = "UPDATE device SET name = '" + Name + "', value =" + Value + ", type =" + (int) Type +
+                        ", status =" + Convert.ToInt32(OnOff);
             Database.Query = query;
 
             Database.OpenConnection();
@@ -58,7 +59,7 @@ namespace ProftaakSmartHome.Classes
             }
         }
 
-        public void Insert()
+        public void Insert() // Unused, managed by server
         {
             var query = "INSERT INTO device (name, value, type) VALUES('" + Name + "'," + 0 + ", " + (int) Type + ")";
             Database.Query = query;
@@ -79,7 +80,8 @@ namespace ProftaakSmartHome.Classes
             while (reader.Read())
             {
                 Device device = new Device((int) reader["deviceid"], reader["name"].ToString(), (int) reader["value"],
-                    (DeviceType) reader["type"]); // Create new device object
+                    (DeviceType) reader["type"])
+                {OnOff = Convert.ToBoolean(reader["status"])}; // Create new device object
                 devices.Add(device);
             }
 
