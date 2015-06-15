@@ -66,12 +66,35 @@ namespace ProftaakSmartHome.Classes
         /// Generates DB schemas based on the SQL statements in databaseExport.sql
         /// Default tables are: device, device_group, devicetypes, groups, permissions, users
         /// </summary>
-        private static void GenerateSchemas()
+        private static void GenerateSchemas(bool addDummyData = false)
         {
             OpenConnection();
 
             var query = string.Empty;
             var lines = File.ReadAllLines("databaseExport.sql");
+
+            query = lines.Aggregate(query, (current, line) => current + line); // Puts every line in a single string.
+            Query = query;
+
+            Command.ExecuteNonQuery();
+
+            CloseConnection();
+
+            if (addDummyData)
+            {
+                GenerateDummyData();
+            }
+        }
+
+        /// <summary>
+        /// Inserts dummy data into the database, after clearing all data and resetting the auto increments
+        /// </summary>
+        private static void GenerateDummyData()
+        {
+            OpenConnection();
+
+            var query = string.Empty;
+            var lines = File.ReadAllLines("dummyData.sql");
 
             query = lines.Aggregate(query, (current, line) => current + line); // Puts every line in a single string.
             Query = query;
