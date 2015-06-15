@@ -84,6 +84,7 @@ namespace Server.Services
                 var lights = message.Substring(itemStartIndex, message.IndexOf(">") - itemStartIndex).Split('*').ToList();
                 foreach (var light in lights)
                 {
+                    var pin = Convert.ToInt32(light);
                     var device = new Device("Light", DeviceType.Light, _serialPortObject.ArduinoPort, Convert.ToInt32(light));
                     device.Insert();
                 }
