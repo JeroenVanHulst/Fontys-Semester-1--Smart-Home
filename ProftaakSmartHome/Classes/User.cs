@@ -79,8 +79,7 @@ namespace ProftaakSmartHome.Classes
 
         public void Insert()
         {
-            // TODO: Inserting users as admin. Determine if it wants 'true' or '1'.
-            var query = "INSERT INTO user (username, password) VALUES ('" + Name + "', '" + Password + "')";
+            var query = "INSERT INTO user (username, password, admin) VALUES ('" + Name + "', '" + Password + "', " + Convert.ToInt32(IsAdmin) + ")";
             Database.Query = query;
 
             Database.OpenConnection();
