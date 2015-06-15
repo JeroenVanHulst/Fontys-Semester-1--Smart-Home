@@ -1,0 +1,10 @@
+D:\Development\Proftaak S1P2\Server\bin\Debug\Server.exe.config
+D:\Development\Proftaak S1P2\Server\bin\Debug\Server.exe
+D:\Development\Proftaak S1P2\Server\bin\Debug\Server.pdb
+D:\Development\Proftaak S1P2\Server\obj\Debug\Server.exe
+D:\Development\Proftaak S1P2\Server\obj\Debug\Server.pdb
+D:\Development\Proftaak S1P2\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+D:\Development\Proftaak S1P2\Server\bin\Debug\ProftaakSmartHome.exe
+D:\Development\Proftaak S1P2\Server\bin\Debug\System.Data.SQLite.dll
+D:\Development\Proftaak S1P2\Server\bin\Debug\DevComponents.DotNetBar2.dll
+D:\Development\Proftaak S1P2\Server\bin\Debug\ProftaakSmartHome.pdb

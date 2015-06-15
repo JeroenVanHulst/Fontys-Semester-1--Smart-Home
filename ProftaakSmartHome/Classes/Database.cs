@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ProftaakSmartHome.Classes
 {
-    class Database
+    public class Database
     {
         private static SQLiteConnection _connection;
         private static SQLiteCommand _command;

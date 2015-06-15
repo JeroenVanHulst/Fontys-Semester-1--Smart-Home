@@ -18,9 +18,21 @@ namespace ProftaakSmartHome.Classes
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ComPort { get; set; }
         public int Value { get; set; }
         public bool OnOff { get; set; }
         public DeviceType Type { get; set; }
+
+        public int Pin { get; set; }
+
+        public Device(string name, DeviceType type, string comPort, int pin)
+        {
+            Name = name;
+            Type = type;
+            Value = 0;
+            ComPort = comPort;
+            Pin = pin;
+        }
 
         public Device(int id, string name, int value, DeviceType type)
         {
