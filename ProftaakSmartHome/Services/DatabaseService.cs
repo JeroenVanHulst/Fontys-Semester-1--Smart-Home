@@ -8,13 +8,13 @@ namespace ProftaakSmartHome.Services
     public static class DatabaseService
     {
         /// <summary>
-        /// Checks and returns the 
+        /// Checks and returns the MD5 checksum of the file
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
         public static Guid GetMd5HashFromFile(string filename)
         {
-            using (var stream = File.Open(Database.Filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var stream = File.OpenRead(Database.Filename))
             {
                 var md5 = new MD5CryptoServiceProvider();
                 var retVal = md5.ComputeHash(stream);

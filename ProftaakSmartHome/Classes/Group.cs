@@ -89,8 +89,10 @@ namespace ProftaakSmartHome.Classes
                 reader = Database.Command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Device device = new Device((int)reader["deviceid"], reader["name"].ToString(), (int)reader["value"],
-                        (DeviceType)reader["type"]); // Create new device object
+                    Device device = new Device((int) reader["deviceid"], reader["name"].ToString(),
+                        (int) reader["value"],
+                        (DeviceType) reader["type"])
+                    {OnOff = Convert.ToBoolean(reader["status"])}; // Create new device object
                     group.Devices.Add(device); // And add it to this particular group
                 }
             }
@@ -120,7 +122,10 @@ namespace ProftaakSmartHome.Classes
                 while (deviceReader.Read())
                 {
                     result.Devices.Add(new Device((int) deviceReader["deviceid"], deviceReader["name"].ToString(),
-                        (int) deviceReader["value"], (DeviceType) deviceReader["type"]));
+                        (int) deviceReader["value"], (DeviceType) deviceReader["type"])
+                    {
+                        OnOff = Convert.ToBoolean(reader["status"])
+                    });
                 }
             }
             else
@@ -152,8 +157,11 @@ namespace ProftaakSmartHome.Classes
 
                 while (deviceReader.Read())
                 {
-                    result.Devices.Add(new Device((int)deviceReader["deviceid"], deviceReader["name"].ToString(),
-                        (int)deviceReader["value"], (DeviceType)deviceReader["type"]));
+                    result.Devices.Add(new Device((int) deviceReader["deviceid"], deviceReader["name"].ToString(),
+                        (int) deviceReader["value"], (DeviceType) deviceReader["type"])
+                    {
+                        OnOff = Convert.ToBoolean(reader["status"])
+                    });
                 }
             }
             else
