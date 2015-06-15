@@ -8,3 +8,6 @@ D:\Development\Proftaak S1P2\Server\bin\Debug\ProftaakSmartHome.exe
 D:\Development\Proftaak S1P2\Server\bin\Debug\System.Data.SQLite.dll
 D:\Development\Proftaak S1P2\Server\bin\Debug\DevComponents.DotNetBar2.dll
 D:\Development\Proftaak S1P2\Server\bin\Debug\ProftaakSmartHome.pdb
+D:\Dropbox\Projects\ProftaakSmarthome\Server\bin\Debug\Server.exe.config
+D:\Dropbox\Projects\ProftaakSmarthome\Server\obj\Debug\Server.exe
+D:\Dropbox\Projects\ProftaakSmarthome\Server\obj\Debug\Server.pdb
