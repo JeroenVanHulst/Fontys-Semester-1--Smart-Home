@@ -29,7 +29,7 @@ namespace ProftaakSmartHome.Forms
         {
             _group.Devices.ForEach(x => listBoxGroup.Items.Add(x));
 
-            _devices.Where(x => !_group.Devices.Contains(x)).ToList().ForEach(x => listBoxDevices.Items.Add(x));
+            _devices.Where(x => _group.Devices.Count(y => y.Id == x.Id) == 0).ToList().ForEach(x => listBoxDevices.Items.Add(x));
         }
 
         private void buttonDeleteFromGroup_Click(object sender, EventArgs e)
@@ -56,6 +56,7 @@ namespace ProftaakSmartHome.Forms
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            _group.UpdateDevices();
             Close();
         }
     }

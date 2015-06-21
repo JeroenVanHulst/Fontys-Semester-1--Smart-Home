@@ -19,12 +19,24 @@ namespace ProftaakSmartHome.Forms
             InitializeComponent();
             _device = device;
             valueSlider.Value = device.Value;
-            if (!device.OnOff) valueSlider.Enabled = false;
+            setButtonOnOf();
+            labelName.Text = device.Name;
+
+            if (device.Type != DeviceType.DimmableLight) valueSlider.Hide();
         }
 
         private void buttonOnOff_Click(object sender, EventArgs e)
         {
             _device.OnOff = !_device.OnOff;
+
+            _device.Update();
+
+            setButtonOnOf();
+        }
+
+        private void setButtonOnOf()
+        {
+            valueSlider.Enabled = _device.OnOff;
 
             if (_device.OnOff)
             {
@@ -36,8 +48,6 @@ namespace ProftaakSmartHome.Forms
                 buttonOnOff.Text = "Off";
                 buttonOnOff.BackColor = Color.Red;
             }
-
-            _device.Update();
         }
 
         private void valueSlider_ValueChanged(object sender, EventArgs e)

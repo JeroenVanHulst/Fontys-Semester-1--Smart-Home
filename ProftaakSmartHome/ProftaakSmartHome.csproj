@@ -127,12 +127,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Light.bmp" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo_white copy.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\078574-blue-jelly-icon-business-light-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\078574-blue-jelly-icon-business-light-off2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

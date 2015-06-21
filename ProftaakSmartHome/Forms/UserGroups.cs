@@ -24,7 +24,7 @@ namespace ProftaakSmartHome.Forms
         {
             _user.Privileges.ForEach(x => listBoxUser.Items.Add(x));
 
-            _groups.Where(x => !_user.Privileges.Contains(x)).ToList().ForEach(x => listBoxGroups.Items.Add(x));
+            _groups.Where(x => _user.Privileges.Count(y => y.Id == x.Id) == 0).ToList().ForEach(x => listBoxGroups.Items.Add(x));
         }
 
         private void buttonDeleteFromUser_Click(object sender, EventArgs e)
@@ -51,6 +51,7 @@ namespace ProftaakSmartHome.Forms
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            _user.UpdatePrivilages();
             Close();
         }
     }

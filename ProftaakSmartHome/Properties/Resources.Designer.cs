@@ -63,6 +63,16 @@ namespace ProftaakSmartHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _078574_blue_jelly_icon_business_light_off2 {
+            get {
+                object obj = ResourceManager.GetObject("_078574_blue_jelly_icon_business_light_off2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_white_copy {
             get {
                 object obj = ResourceManager.GetObject("logo_white_copy", resourceCulture);
