@@ -17,19 +17,27 @@ namespace ProftaakSmartHome.Forms
         public MainForm(User user)
         {
             InitializeComponent();
+            
+            advTreeUsers.SelectionChanged += advTreeUsers_SelectionChanged;
+            advTreeDevices.SelectionChanged += advTreeDevices_SelectionChanged;
+            advTreeGroups.SelectionChanged += advTreeGroups_SelectionChanged;
+            advPropertyGridUsers.PropertyValueChanged += advPropertyGridUsers_PropertyChanged;
+            advPropertyGridDevices.PropertyValueChanged += advPropertyGridDevices_PropertyChanged;
+            advPropertyGridGroup.PropertyValueChanged += advPropertyGridGroup_PropertyChanged;
+
             _user = user;
             setControls();
+            setGroups();
 
             if (_user.IsAdmin)
             {
-                setGroups();
                 setUsers();
                 setDevices();
             }
 
             setDevicesControl();
 
-            _watcher = new FileSystemWatcher
+            /*_watcher = new FileSystemWatcher
             {
                 NotifyFilter =
                     NotifyFilters.LastAccess | NotifyFilters.LastWrite // These are the flags of change types to watch for
@@ -39,7 +47,22 @@ namespace ProftaakSmartHome.Forms
             _watcher.Changed += DatabaseOnChanged;
             _watcher.Deleted += DatabaseOnDeleted;
             _watcher.Error += DatabaseOnError;
-            _watcher.EnableRaisingEvents = true; // Begin watching
+            _watcher.EnableRaisingEvents = true; // Begin watching*/
+        }
+
+        void advTreeGroups_SelectionChanged(object sender, EventArgs e)
+        {
+            advPropertyGridGroup.SelectedObject = advTreeGroups.SelectedNode.Tag as Group;
+        }
+
+        private void advTreeUsers_SelectionChanged(object sender, EventArgs e)
+        {
+            advPropertyGridUsers.SelectedObject = advTreeUsers.SelectedNode.Tag as User;
+        }
+
+        void advTreeDevices_SelectionChanged(object sender, EventArgs e)
+        {
+            advPropertyGridDevices.SelectedObject = advTreeDevices.SelectedNode.Tag as Device;
         }
 
         /// <summary>
@@ -47,6 +70,8 @@ namespace ProftaakSmartHome.Forms
         /// </summary>
         private void setDevicesControl()
         {
+            if (_user.Privileges == null) return;
+
             foreach (var group in _user.Privileges)
             {
                 group.Devices.ForEach(x => flowLayoutPanel.Controls.Add(new LightControl(x)));
@@ -57,9 +82,9 @@ namespace ProftaakSmartHome.Forms
         {
             if (_user.IsAdmin) return;
 
-            tabDevices.Visible = false;
-            tabGroups.Visible = false;
-            tabUsers.Visible = false;
+            tabDevices.Dispose();
+            tabGroups.Dispose();
+            tabUsers.Dispose();
         }
 
         #region users
@@ -71,8 +96,8 @@ namespace ProftaakSmartHome.Forms
             foreach (var user in users)
             {
                 var node = new Node { Tag = user };
-                node.Cells[1].Text = user.Name;
-                node.Cells[2].Text = user.Privileges.Count.ToString();
+                node.Cells.Add(new Cell(user.Name));
+                node.Cells.Add(new Cell(user.Privileges.Count.ToString()));
                 advTreeUsers.Nodes.Add(node);
             }
         }
@@ -81,8 +106,8 @@ namespace ProftaakSmartHome.Forms
         {
             var user = new User("new user") {Password = "DefaultPassword"};
             var node = new Node {Tag = user};
-            node.Cells[1].Text = user.Name;
-            node.Cells[2].Text = user.Privileges.Count.ToString();
+            node.Cells.Add(new Cell(user.Name));
+            node.Cells.Add(new Cell(user.Privileges.Count.ToString()));
 
             advTreeUsers.Nodes.Add(node);
             advTreeUsers.SelectedNode = node;
@@ -109,7 +134,8 @@ namespace ProftaakSmartHome.Forms
 
             var groups = (from Node node in advTreeGroups.Nodes select node.Tag as Group).ToList();
             var userGroupForm = new UserGroups(advTreeUsers.SelectedNode.Tag as User, groups);
-            userGroupForm.Show();
+            userGroupForm.ShowDialog();
+            advTreeUsers.SelectedNode.Cells[2].Text = ((User) advTreeUsers.SelectedNode.Tag).Privileges.Count.ToString();
         }
         #endregion
 
@@ -122,9 +148,9 @@ namespace ProftaakSmartHome.Forms
             foreach (var device in devices)
             {
                 var node = new Node { Tag = device };
-                node.Cells[1].Text = device.Name;
-                node.Cells[2].Text = device.Type.ToString();
-                node.Cells[3].Text = device.Value.ToString();
+                node.Cells.Add(new Cell(device.Name));
+                node.Cells.Add(new Cell(device.Type.ToString()));
+                node.Cells.Add(new Cell(device.Value.ToString()));
                 advTreeDevices.Nodes.Add(node);
             }
         }
@@ -142,8 +168,8 @@ namespace ProftaakSmartHome.Forms
                 if (!_user.IsAdmin) continue;
 
                 var node = new Node { Tag = group };
-                node.Cells[1].Text = group.Name;
-                node.Cells[2].Text = group.Devices.Count.ToString();
+                node.Cells.Add(new Cell(group.Name));
+                node.Cells.Add(new Cell(group.Devices.Count.ToString()));
                 advTreeGroups.Nodes.Add(node);
             }
         }
@@ -152,8 +178,8 @@ namespace ProftaakSmartHome.Forms
         {
             var group = new Group("New group");
             var node = new Node { Tag = group };
-            node.Cells[1].Text = group.Name;
-            node.Cells[2].Text = group.Devices.Count.ToString();
+            node.Cells.Add(new Cell(group.Name));
+            node.Cells.Add(new Cell(group.Devices.Count.ToString()));
 
             advTreeGroups.Nodes.Add(node);
             advTreeGroups.SelectedNode = node;
@@ -167,7 +193,8 @@ namespace ProftaakSmartHome.Forms
 
             var devices = (from Node node in advTreeDevices.Nodes select node.Tag as Device).ToList();
             var groupDeviceForm = new GroupDevices(advTreeGroups.SelectedNode.Tag as Group, devices);
-            groupDeviceForm.Show();
+            groupDeviceForm.ShowDialog();
+            advTreeGroups.SelectedNode.Cells[2].Text = ((Group) advTreeGroups.SelectedNode.Tag).Devices.Count.ToString();
         }
 
         private void buttonDeleteGroup_Click(object sender, System.EventArgs e)
@@ -198,27 +225,20 @@ namespace ProftaakSmartHome.Forms
         {
             ((Device)advTreeDevices.SelectedNode.Tag).Update();
         }
-
-        private void DatabaseOnError(object sender, ErrorEventArgs e)
-        {
-            // Actions for when the database can't be monitored for changes for some reason
-            //MessageBox.Show(e.GetException().Message);
-        }
-
-        private void DatabaseOnDeleted(object sender, FileSystemEventArgs e)
-        {
-            // Actions for when the database is deleted
-            //MessageBox.Show("{0} was deleted", e.Name);
-        }
-
-        private void DatabaseOnChanged(object sender, FileSystemEventArgs e)
-        {
-            // Actions for when the database is changed
-            Database.PreviousHash = DatabaseService.GetMd5HashFromFile(Database.Filename);
-
-            // TODO: Determine what exactly needs to be executed when this happens
-            setDevices();
-        }
         #endregion
+
+        private void comboBoxGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var group = comboBoxGroups.SelectedItem as Group;
+
+            flowLayoutPanel.Controls.Clear();
+
+            group.Devices.ForEach(x => flowLayoutPanel.Controls.Add(new LightControl(x)));
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

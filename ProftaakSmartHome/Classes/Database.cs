@@ -8,7 +8,7 @@ namespace ProftaakSmartHome.Classes
 {
     public class Database
     {
-        private static SQLiteConnection _connection;
+        public static SQLiteConnection Connection { get; set; }
         private static SQLiteCommand _command;
 
         public static readonly string Filename = "Database.db";
@@ -20,25 +20,28 @@ namespace ProftaakSmartHome.Classes
             set
             {
                 PrepareConnection();
-                _command = new SQLiteCommand(value, _connection);
+                _command = new SQLiteCommand(value, Connection);
             }
         }
 
         public static void OpenConnection()
         {
             // Checks if the connection is not already open
-            if (_connection.State != ConnectionState.Open)
+            if (Connection.State != ConnectionState.Open)
             {
-                _connection.Open();
+                Connection.Open();
             }
         }
 
         public static void CloseConnection()
         {
             // Checks if the connection is not already closed
-            if (_connection.State != ConnectionState.Closed)
+            if (Connection.State != ConnectionState.Closed)
             {
-                _connection.Close();
+                //Dispose the SQLite adapter settings
+                Command.Dispose();
+                GC.Collect();
+                Connection.Close();
             }
         }
 
@@ -56,9 +59,9 @@ namespace ProftaakSmartHome.Classes
                 GenerateSchemas();
             }
 
-            if (_connection == null)
+            if (Connection == null)
             {
-                _connection = new SQLiteConnection(String.Format("Data Source={0};Version=3", Filename));
+                Connection = new SQLiteConnection(String.Format("Data Source={0};Version=3", Filename));
             }
         }
 

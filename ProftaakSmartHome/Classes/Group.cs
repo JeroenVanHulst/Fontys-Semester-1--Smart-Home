@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
@@ -9,9 +10,11 @@ namespace ProftaakSmartHome.Classes
     /// </summary>
     public class Group : IDatabaseObject
     {
+        [Browsable(false)]
         public int Id { get; set; }
         public string Name { get; set; }
 
+        [Browsable(false)]
         public List<Device> Devices { get; private set; }
 
         public Group(string name)
@@ -27,9 +30,14 @@ namespace ProftaakSmartHome.Classes
             Name = name;
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         public void Update()
         {
-            var query = "UPDATE groups SET name = '" + Name + "' WHERE groupid = " + Id;
+            var query = string.Format("UPDATE groups SET name = '{0}' WHERE groupid = {1}", Name, Id);
             Database.Query = query;
 
             Database.OpenConnection();
@@ -69,7 +77,7 @@ namespace ProftaakSmartHome.Classes
         public static List<Group> GetAllGroups()
         {
             var queryGroups = "SELECT * FROM groups";
-            var queryDevices = "SELECT d.* FROM device d, device_group dg, groups g WHERE d.deviceid = dg.deviceid AND g.groupid = ";
+            var queryDevices = "SELECT * FROM device d WHERE d.deviceid IN(SELECT deviceid FROM device_group WHERE groupid = ";
 
             Database.Query = queryGroups;
             Database.OpenConnection();
@@ -80,17 +88,17 @@ namespace ProftaakSmartHome.Classes
 
             while (reader.Read())
             {
-                groups.Add(new Group(reader["name"].ToString()){Id = Convert.ToInt32(reader["id"])});
+                groups.Add(new Group(reader["name"].ToString()){Id = Convert.ToInt32(reader["groupid"])});
             }
 
             foreach (var group in groups)
             {
-                Database.Query = queryDevices + group.Id;
+                Database.Query = string.Format("{0}{1})",queryDevices, group.Id);
                 reader = Database.Command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Device device = new Device((int) reader["deviceid"], reader["name"].ToString(),
-                        (int) reader["value"],
+                    var device = new Device(Convert.ToInt32(reader["deviceid"]), reader["name"].ToString(),
+                        Convert.ToInt32(reader["value"]),
                         (DeviceType) reader["type"])
                     {OnOff = Convert.ToBoolean(reader["status"])}; // Create new device object
                     group.Devices.Add(device); // And add it to this particular group
@@ -106,25 +114,26 @@ namespace ProftaakSmartHome.Classes
         {
             Group result;
             var queryGroup = "SELECT * FROM groups WHERE groupid = " + id;
+            var queryDevices = "SELECT * FROM device d WHERE d.deviceid IN(SELECT deviceid FROM device_group WHERE groupid = ";
             Database.Query = queryGroup;
    
             Database.OpenConnection();
 
             var reader = Database.Command.ExecuteReader();
+            reader.Read();
 
             if (reader.HasRows)
             {
-                result = new Group(reader["name"].ToString()) {Id = Convert.ToInt32(reader["id"])};
-                var queryDevice = "SELECT d.* FROM device d, device_group dg, group g WHERE d.deviceid = dg.deviceid AND g.groupid = " + result.Id;
-                Database.Query = queryDevice;
+                result = new Group(reader["name"].ToString()) {Id = Convert.ToInt32(reader["groupid"])};
+                Database.Query = string.Format("{0}{1})", queryDevices, result.Id);
                 var deviceReader = Database.Command.ExecuteReader();
 
                 while (deviceReader.Read())
                 {
-                    result.Devices.Add(new Device((int) deviceReader["deviceid"], deviceReader["name"].ToString(),
-                        (int) deviceReader["value"], (DeviceType) deviceReader["type"])
+                    result.Devices.Add(new Device(Convert.ToInt32(deviceReader["deviceid"]), deviceReader["name"].ToString(),
+                        Convert.ToInt32(deviceReader["value"]), (DeviceType) deviceReader["type"])
                     {
-                        OnOff = Convert.ToBoolean(reader["status"])
+                        OnOff = Convert.ToBoolean(deviceReader["status"])
                     });
                 }
             }
@@ -132,8 +141,6 @@ namespace ProftaakSmartHome.Classes
             {
                 return null;
             }
-
-            Database.CloseConnection();
 
             return result;
         }
@@ -142,6 +149,7 @@ namespace ProftaakSmartHome.Classes
         {
             Group result;
             var queryGroup = "SELECT * FROM groups WHERE name ='" + name +"'";
+            var queryDevices = "SELECT * FROM device d WHERE d.deviceid IN(SELECT deviceid FROM device_group WHERE groupid = ";
             Database.Query = queryGroup;
 
             Database.OpenConnection();
@@ -151,8 +159,7 @@ namespace ProftaakSmartHome.Classes
             if (reader.HasRows)
             {
                 result = new Group(reader["name"].ToString()) {Id = Convert.ToInt32(reader["id"])};
-                var queryDevice = "SELECT d.* FROM device d, device_group dg, groups g WHERE d.deviceid = dg.deviceid AND g.groupid = " + result.Id;
-                Database.Query = queryDevice;
+                Database.Query = string.Format("{0}{1})", queryDevices, result.Id);
                 var deviceReader = Database.Command.ExecuteReader();
 
                 while (deviceReader.Read())
@@ -174,10 +181,22 @@ namespace ProftaakSmartHome.Classes
             return result;
         }
 
-        public void AddDeviceToGroup(Device d)
+        public void UpdateDevices()
         {
-            Database.Query = "INSERT INTO device_group VALUES (" + d.Id + ", " + Id + ");";
-            Devices.Add(d);
+            var queryRemove = "DELETE FROM device_group WHERE groupid = " + Id;
+            Database.Query = queryRemove;
+            Database.OpenConnection();
+            Database.Command.ExecuteNonQuery();
+            Database.CloseConnection();
+
+            foreach (var device in Devices)
+            {
+                var query = string.Format("INSERT INTO device_group VALUES ({0}, {1})",device.Id, Id);
+                Database.Query = query;
+                Database.OpenConnection();
+                Database.Command.ExecuteNonQuery();
+                Database.CloseConnection();
+            }
         }
         #endregion
     }
