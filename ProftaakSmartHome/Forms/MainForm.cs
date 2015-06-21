@@ -12,7 +12,6 @@ namespace ProftaakSmartHome.Forms
     public partial class MainForm : Form
     {
         private User _user;
-        private FileSystemWatcher _watcher;
 
         public MainForm(User user)
         {

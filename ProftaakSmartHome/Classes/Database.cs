@@ -11,7 +11,7 @@ namespace ProftaakSmartHome.Classes
         public static SQLiteConnection Connection { get; set; }
         private static SQLiteCommand _command;
 
-        public static readonly string Filename = "Database.db";
+        public static readonly string Filename = @"C:\Users\Jeroen\Dropbox\Proftaak A3A\DATABASE\Database.db";
         public static SQLiteCommand Command { get { return _command; } }
         public static Guid PreviousHash;
 
