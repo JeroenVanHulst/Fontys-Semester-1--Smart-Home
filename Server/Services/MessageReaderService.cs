@@ -82,6 +82,7 @@ namespace Server.Services
             {
                 var itemStartIndex = message.IndexOf("*");
                 var lights = message.Substring(itemStartIndex, message.IndexOf(">") - itemStartIndex).Split('*').ToList();
+                lights.Remove(lights.First());
                 foreach (var light in lights)
                 {
                     var pin = Convert.ToInt32(light);
@@ -93,6 +94,7 @@ namespace Server.Services
             {
                 var itemStartIndex = message.IndexOf("*");
                 var lights = message.Substring(itemStartIndex, message.IndexOf(">") - itemStartIndex).Split('*').ToList();
+                lights.Remove(lights.First());
                 foreach (var light in lights)
                 {
                     var device = new Device("DimmableLight", DeviceType.DimmableLight, _serialPortObject.ArduinoPort, Convert.ToInt32(light));

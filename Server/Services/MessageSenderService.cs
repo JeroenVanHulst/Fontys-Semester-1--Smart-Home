@@ -10,7 +10,7 @@ namespace Server.Services
 {
     public class MessageSenderService
     {
-        private SerialPortObject _serialPortObject;
+        public SerialPortObject SerialPortObject;
 
         private string _startChar = "%";
 
@@ -26,7 +26,7 @@ namespace Server.Services
 
         public MessageSenderService(SerialPortObject serialPort)
         {
-            _serialPortObject = serialPort;
+            SerialPortObject = serialPort;
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace Server.Services
         {
             try
             {
-                if (!_serialPortObject.SerialPort.IsOpen) throw new Exception();
-                _serialPortObject.SerialPort.Write(message);
+                if (!SerialPortObject.SerialPort.IsOpen) throw new Exception();
+                SerialPortObject.SerialPort.Write(message);
             }
             catch (Exception ex)
             {

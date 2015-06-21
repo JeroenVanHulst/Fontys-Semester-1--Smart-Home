@@ -48,7 +48,7 @@ namespace ProftaakSmartHome.Classes
         
         public void Update()
         {
-            var query = string.Format("UPDATE device SET name = '{0}', value = {1}, type = {2}, status = {3} WHERE deviceid = {4}", Name, Value, (int) Type, Convert.ToInt32(OnOff), Id);
+            var query = string.Format("UPDATE device SET name = '{0}', value = {1}, type = {2}, status = {3}, pin = {4}, comport = '{5}' WHERE deviceid = {6}", Name, Value, (int) Type, Convert.ToInt32(OnOff), Pin, ComPort, Id);
             Database.Query = query;
 
             Database.OpenConnection();
@@ -76,7 +76,7 @@ namespace ProftaakSmartHome.Classes
 
         public void Insert() // Unused, managed by server
         {
-            var query = "INSERT INTO device (name, value, type) VALUES('" + Name + "'," + 0 + ", " + (int) Type + ")";
+            var query = string.Format("INSERT INTO device (name, value, type, status, pin, comport) VALUES('{0}', 0, {1}, 0, {2}, '{3}')", Name, (int) Type, Pin, ComPort);
             Database.Query = query;
 
             Database.OpenConnection();
@@ -97,7 +97,11 @@ namespace ProftaakSmartHome.Classes
             {
                 var device = new Device(Convert.ToInt32(reader["deviceid"]), reader["name"].ToString(), Convert.ToInt32(reader["value"]),
                     (DeviceType) reader["type"])
-                {OnOff = Convert.ToBoolean(reader["status"])}; // Create new device object
+                {
+                    OnOff = Convert.ToBoolean(reader["status"]),
+                    ComPort = reader["comport"].ToString(),
+                    Pin = Convert.ToInt32(reader["pin"])
+                }; // Create new device object
                 devices.Add(device);
             }
 
