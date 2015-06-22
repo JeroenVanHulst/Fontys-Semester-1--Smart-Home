@@ -91,6 +91,7 @@ namespace ProftaakSmartHome.Classes
 
             Database.OpenConnection();
             Database.Command.ExecuteNonQuery();
+            Id = Convert.ToInt32(Database.Connection.LastInsertRowId);
             Database.CloseConnection();
         }
 

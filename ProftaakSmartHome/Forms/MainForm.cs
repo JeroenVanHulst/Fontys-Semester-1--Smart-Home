@@ -110,7 +110,7 @@ namespace ProftaakSmartHome.Forms
 
             advTreeUsers.Nodes.Add(node);
             advTreeUsers.SelectedNode = node;
-            advPropertyGridUsers.SelectedObject = advTreeUsers.SelectedNode;
+            advPropertyGridUsers.SelectedObject = advTreeUsers.SelectedNode.Tag;
 
             user.Insert();
         }
@@ -182,7 +182,7 @@ namespace ProftaakSmartHome.Forms
 
             advTreeGroups.Nodes.Add(node);
             advTreeGroups.SelectedNode = node;
-            advPropertyGridGroup.SelectedObject = advTreeGroups.SelectedNode;
+            advPropertyGridGroup.SelectedObject = advTreeGroups.SelectedNode.Tag;
 
             group.Insert();
         }

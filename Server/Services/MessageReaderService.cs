@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using ProftaakSmartHome.Classes;
@@ -83,10 +84,14 @@ namespace Server.Services
                 var itemStartIndex = message.IndexOf("*");
                 var lights = message.Substring(itemStartIndex, message.IndexOf(">") - itemStartIndex).Split('*').ToList();
                 lights.Remove(lights.First());
+                if (lights.Count == 0) return;
                 foreach (var light in lights)
                 {
                     var pin = Convert.ToInt32(light);
+                    if (devices.Any(x => x.ComPort == _serialPortObject.ArduinoPort && x.Pin == pin)) return;
+
                     var device = new Device("Light", DeviceType.Light, _serialPortObject.ArduinoPort, Convert.ToInt32(light));
+                    device.Pin = pin;
                     device.Insert();
                 }
             }
@@ -95,9 +100,13 @@ namespace Server.Services
                 var itemStartIndex = message.IndexOf("*");
                 var lights = message.Substring(itemStartIndex, message.IndexOf(">") - itemStartIndex).Split('*').ToList();
                 lights.Remove(lights.First());
+                if (lights.Count == 0) return;
                 foreach (var light in lights)
                 {
+                    var pin = Convert.ToInt32(light);
+                    if (devices.Any(x => x.ComPort == _serialPortObject.ArduinoPort && x.Pin == pin)) return;
                     var device = new Device("DimmableLight", DeviceType.DimmableLight, _serialPortObject.ArduinoPort, Convert.ToInt32(light));
+                    device.Pin = pin;
                     device.Insert();
                 }
             }
