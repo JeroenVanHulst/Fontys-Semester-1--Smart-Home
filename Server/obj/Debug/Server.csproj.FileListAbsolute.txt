@@ -11,3 +11,12 @@ D:\Development\Proftaak S1P2\Server\bin\Debug\ProftaakSmartHome.pdb
 D:\Dropbox\Projects\ProftaakSmarthome\Server\bin\Debug\Server.exe.config
 D:\Dropbox\Projects\ProftaakSmarthome\Server\obj\Debug\Server.exe
 D:\Dropbox\Projects\ProftaakSmarthome\Server\obj\Debug\Server.pdb
+C:\Development\Proftaak 2\Server\bin\Debug\Server.exe.config
+C:\Development\Proftaak 2\Server\obj\Debug\Server.exe
+C:\Development\Proftaak 2\Server\obj\Debug\Server.pdb
+C:\Development\Proftaak 2\Server\bin\Debug\Server.exe
+C:\Development\Proftaak 2\Server\bin\Debug\Server.pdb
+C:\Development\Proftaak 2\Server\bin\Debug\ProftaakSmartHome.exe
+C:\Development\Proftaak 2\Server\bin\Debug\System.Data.SQLite.dll
+C:\Development\Proftaak 2\Server\bin\Debug\ProftaakSmartHome.pdb
+C:\Development\Proftaak 2\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache

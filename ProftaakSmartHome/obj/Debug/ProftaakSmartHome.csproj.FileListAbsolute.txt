@@ -67,3 +67,6 @@ D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartH
 D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LoginForm.resources
 D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.MainForm.resources
 D:\Dropbox\Projects\ProftaakSmarthome\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.UserGroups.resources
+C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.GroupDevices.resources
+C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.LightControl.resources
+C:\Development\Proftaak 2\ProftaakSmartHome\obj\Debug\ProftaakSmartHome.Forms.UserGroups.resources
