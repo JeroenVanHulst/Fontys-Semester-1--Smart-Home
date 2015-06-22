@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace ProftaakSmartHome.Classes
 {
@@ -39,9 +40,10 @@ namespace ProftaakSmartHome.Classes
             if (Connection.State != ConnectionState.Closed)
             {
                 //Dispose the SQLite adapter settings
-                Command.Dispose();
+                //Command.Dispose();
                 GC.Collect();
                 Connection.Close();
+                Thread.Sleep(200);
             }
         }
 

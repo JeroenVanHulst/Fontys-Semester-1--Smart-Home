@@ -87,11 +87,15 @@ namespace Server
             {
                 if (_devices.Count != 0 && _devices.FirstOrDefault(x => x.Id == device.Id).OnOff != device.OnOff && device.OnOff)
                 {
-                    _messageSenders.FirstOrDefault(x => x.SerialPortObject.ArduinoPort == device.ComPort).TurnLightOn(device.Pin);
+                    //_messageSenders.FirstOrDefault(x => x.SerialPortObject.ArduinoPort == device.ComPort).TurnLightOn(device.Pin);
+                    var senderx = _messageSenders.FirstOrDefault(x => x.SerialPortObject.ArduinoPort == device.ComPort);
+                    senderx.TurnLightOn(device.Pin);
                 }
                 else if (_devices.Count != 0 && _devices.FirstOrDefault(x => x.Id == device.Id).OnOff != device.OnOff && !device.OnOff)
                 {
-                    _messageSenders.FirstOrDefault(x => x.SerialPortObject.ArduinoPort == device.ComPort).TurnLightOff(device.Pin);
+                    //_messageSenders.FirstOrDefault(x => x.SerialPortObject.ArduinoPort == device.ComPort).TurnLightOff(device.Pin);
+                    var senderx = _messageSenders.FirstOrDefault(x => x.SerialPortObject.ArduinoPort == device.ComPort);
+                    senderx.TurnLightOff(device.Pin);
                 }
 
                 if (_devices.Count != 0 && device.OnOff && _devices.FirstOrDefault(x => x.Id == device.Id).Value != device.Value)

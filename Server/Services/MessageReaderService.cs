@@ -88,7 +88,7 @@ namespace Server.Services
                 foreach (var light in lights)
                 {
                     var pin = Convert.ToInt32(light);
-                    if (devices.Any(x => x.ComPort == _serialPortObject.ArduinoPort && x.Pin == pin)) return;
+                    if (devices.Any(x => x.ComPort == _serialPortObject.ArduinoPort && x.Pin == pin)) continue;
 
                     var device = new Device("Light", DeviceType.Light, _serialPortObject.ArduinoPort, Convert.ToInt32(light));
                     device.Pin = pin;

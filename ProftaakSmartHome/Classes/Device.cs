@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SQLite;
+using System.Threading;
 using ProftaakSmartHome.Interfaces;
 
 namespace ProftaakSmartHome.Classes
@@ -48,7 +49,7 @@ namespace ProftaakSmartHome.Classes
         
         public void Update()
         {
-            var query = string.Format("UPDATE device SET name = '{0}', value = {1}, type = {2}, status = {3}, pin = {4}, comport = '{5}' WHERE deviceid = {6}", Name, Value, (int) Type, Convert.ToInt32(OnOff), Pin, ComPort, Id);
+            var query = string.Format("UPDATE device SET name = '{0}', value = {1}, type = {2}, status = {3} WHERE deviceid = {6}", Name, Value, (int) Type, Convert.ToInt32(OnOff), Pin, ComPort, Id);
             Database.Query = query;
 
             Database.OpenConnection();
@@ -88,25 +89,33 @@ namespace ProftaakSmartHome.Classes
         {
             var query = "SELECT * FROM device";
             Database.Query = query;
-            
+            Thread.Sleep(20);
             Database.OpenConnection();
             var reader = Database.Command.ExecuteReader();
             var devices = new List<Device>();
-
-            while (reader.Read())
+            try
             {
-                Database.OpenConnection();
-                var device = new Device(Convert.ToInt32(reader["deviceid"]), reader["name"].ToString(), Convert.ToInt32(reader["value"]),
-                    (DeviceType) reader["type"])
+                while (reader.Read())
                 {
-                    OnOff = Convert.ToBoolean(reader["status"]),
-                    ComPort = reader["comport"].ToString(),
-                    Pin = Convert.ToInt32(reader["pin"])
-                }; // Create new device object
-                devices.Add(device);
-            }
+                    var comport = reader["comport"].ToString();
+                    var pin = Convert.ToInt32(reader["pin"]);
+                    var device = new Device(Convert.ToInt32(reader["deviceid"]), reader["name"].ToString(),
+                        Convert.ToInt32(reader["value"]),
+                        (DeviceType) reader["type"])
+                    {
+                        OnOff = Convert.ToBoolean(reader["status"]),
+                        ComPort = comport,
+                        Pin = pin
+                    }; // Create new device object
+                    devices.Add(device);
+                }
 
-            Database.CloseConnection();
+                Database.CloseConnection();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             return devices;
         }
